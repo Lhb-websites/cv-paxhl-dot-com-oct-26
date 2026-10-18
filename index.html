@@ -7,7 +7,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-NV0TGL0CVG');
 </script>
 <meta charset="UTF-8">
@@ -18,67 +17,64 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0d0d12;
-  --bg2: #13131c;
-  --bg3: #1a1a27;
-  --border: #23233a;
-  --border2: #2e2e4a;
-  --purple: #7c6dfa;
-  --purple-dim: rgba(124,109,250,0.12);
-  --purple-glow: rgba(124,109,250,0.25);
-  --green: #22d3a3;
-  --green-dim: rgba(34,211,163,0.1);
-  --text: #eeeef5;
-  --text2: #8888aa;
-  --text3: #55556a;
-  color-scheme: dark;
-  box-sizing: border-box;
-  padding-top: env(safe-area-inset-top,0px);
-  padding-bottom: env(safe-area-inset-bottom,0px);
+  --bg:#0d0d12;--bg2:#13131c;--bg3:#1a1a27;
+  --border:#23233a;--border2:#2e2e4a;
+  --purple:#7c6dfa;--purple-dim:rgba(124,109,250,0.12);--purple-glow:rgba(124,109,250,0.25);
+  --green:#22d3a3;--green-dim:rgba(34,211,163,0.1);
+  --text:#eeeef5;--text2:#8888aa;--text3:#55556a;
+  color-scheme:dark;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
 }
 *,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
-body{
-  font-family:'Inter',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  font-size:15px;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 
 /* ── ORBS ── */
 .orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;opacity:0.55}
-.orb-1{width:500px;height:500px;background:radial-gradient(circle,rgba(124,109,250,0.45),transparent 70%);top:-120px;left:-100px}
-.orb-2{width:400px;height:400px;background:radial-gradient(circle,rgba(220,90,220,0.3),transparent 70%);top:60px;right:-80px}
+.orb-1{width:500px;height:500px;background:radial-gradient(circle,rgba(124,109,250,0.45),transparent 70%);top:-120px;left:-100px;animation:orbDrift1 14s ease-in-out infinite}
+.orb-2{width:400px;height:400px;background:radial-gradient(circle,rgba(220,90,220,0.3),transparent 70%);top:60px;right:-80px;animation:orbDrift2 18s ease-in-out infinite}
+@keyframes orbDrift1{0%,100%{transform:translate(0,0)}50%{transform:translate(24px,16px)}}
+@keyframes orbDrift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-18px,24px)}}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-up{opacity:0;transform:translateY(40px);transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1)}
+.reveal-up.visible{opacity:1;transform:translateY(0)}
+.reveal-scale{opacity:0;transform:scale(.97);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+.stagger>*{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.stagger.visible>*{opacity:1;transform:translateY(0)}
+.stagger.visible>*:nth-child(1){transition-delay:.04s}
+.stagger.visible>*:nth-child(2){transition-delay:.10s}
+.stagger.visible>*:nth-child(3){transition-delay:.16s}
+.stagger.visible>*:nth-child(4){transition-delay:.22s}
+.stagger.visible>*:nth-child(5){transition-delay:.28s}
+.stagger.visible>*:nth-child(6){transition-delay:.34s}
+.stagger.visible>*:nth-child(7){transition-delay:.40s}
+.stagger.visible>*:nth-child(8){transition-delay:.46s}
 
 /* ── NAV ── */
-nav{
+nav.top-nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   padding:env(safe-area-inset-top,0px) 0 0;
-  background:rgba(13,13,18,0.7);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
+  background:rgba(13,13,18,0.75);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
   border-bottom:1px solid var(--border);
 }
-.nav-inner{
-  max-width:1100px;margin:0 auto;
-  padding:14px 32px;
-  display:flex;align-items:center;justify-content:space-between;gap:24px;
-}
+.nav-inner{max-width:1100px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 .nav-logo{font-size:14px;font-weight:600;color:var(--text);letter-spacing:-0.01em}
 .nav-links{display:flex;gap:28px;list-style:none}
-.nav-links a{font-size:13px;color:var(--text2);transition:color .15s}
+.nav-links a{font-size:13px;color:var(--text2);transition:color .15s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--purple);transition:width .25s}
 .nav-links a:hover{color:var(--text)}
-.nav-btn{
-  font-size:13px;font-weight:500;
-  background:var(--purple);color:#fff;
-  padding:7px 18px;border-radius:8px;
-  transition:opacity .15s;
-}
-.nav-btn:hover{opacity:.85}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-links a.active{color:var(--text)}
+.nav-btn{font-size:13px;font-weight:500;background:var(--purple);color:#fff;padding:7px 18px;border-radius:8px;transition:opacity .15s,transform .15s}
+.nav-btn:hover{opacity:.85;transform:translateY(-1px)}
 
 /* ── LAYOUT ── */
 .page{position:relative;z-index:1}
@@ -86,277 +82,179 @@ nav{
 .wrap-narrow{max-width:800px;margin:0 auto;padding:0 32px}
 
 /* ── HERO ── */
-.hero{
-  padding:140px 0 80px;
-  text-align:center;
-}
+.hero{padding:140px 0 80px;text-align:center}
 .hero-avatar{
   width:88px;height:88px;border-radius:50%;
-  background:linear-gradient(135deg,var(--purple),#c084fc);
-  margin:0 auto 20px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:32px;font-weight:700;color:#fff;
+  margin:0 auto 20px;overflow:hidden;background:none;
   border:3px solid rgba(124,109,250,0.4);
-  box-shadow:0 0 40px rgba(124,109,250,0.3);
+  box-shadow:0 0 0 6px rgba(124,109,250,0.07),0 0 40px rgba(124,109,250,0.3);
+  animation:avatarPulse 4s ease-in-out infinite;
 }
-.hero h1{
-  font-size:clamp(28px,5vw,48px);
-  font-weight:700;letter-spacing:-0.03em;
-  color:var(--text);margin-bottom:8px;line-height:1.1;
-}
-.hero-role{
-  font-size:16px;font-weight:500;
-  background:linear-gradient(90deg,var(--purple),var(--green));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;
-  margin-bottom:20px;
-}
-.hero-bio{
-  font-size:15px;color:var(--text2);
-  max-width:540px;margin:0 auto 32px;line-height:1.7;
-}
+.hero-avatar img{width:100%;height:100%;object-fit:cover;object-position:center 15%;border-radius:50%}
+@keyframes avatarPulse{0%,100%{box-shadow:0 0 0 6px rgba(124,109,250,0.07),0 0 40px rgba(124,109,250,0.3)}50%{box-shadow:0 0 0 10px rgba(124,109,250,0.04),0 0 60px rgba(124,109,250,0.42)}}
+.hero h1{font-size:clamp(28px,5vw,48px);font-weight:700;letter-spacing:-0.03em;color:var(--text);margin-bottom:8px;line-height:1.1}
+.hero-role{font-size:16px;font-weight:500;background:linear-gradient(90deg,var(--purple),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:20px}
+.hero-bio{font-size:15px;color:var(--text2);max-width:540px;margin:0 auto 12px;line-height:1.7}
 .hero-bio strong{color:var(--text);font-weight:500}
+.hero-tag{font-size:13px;color:var(--text3);margin-bottom:28px;font-family:'Fira Code',monospace;display:block}
 .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
-.btn-solid{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--purple);color:#fff;
-  font-size:14px;font-weight:500;
-  padding:10px 22px;border-radius:8px;
-  transition:opacity .15s;
-}
-.btn-solid:hover{opacity:.85}
-.btn-outline{
-  display:inline-flex;align-items:center;gap:8px;
-  border:1px solid var(--border2);color:var(--text2);
-  font-size:14px;padding:10px 22px;border-radius:8px;
-  transition:border-color .15s,color .15s;
-}
-.btn-outline:hover{border-color:var(--text2);color:var(--text)}
+.btn-solid{display:inline-flex;align-items:center;gap:8px;background:var(--purple);color:#fff;font-size:14px;font-weight:500;padding:10px 22px;border-radius:8px;transition:opacity .15s,transform .15s,box-shadow .15s}
+.btn-solid:hover{opacity:.9;transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,109,250,0.4)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border2);color:var(--text2);font-size:14px;padding:10px 22px;border-radius:8px;transition:border-color .15s,color .15s,transform .15s}
+.btn-outline:hover{border-color:var(--purple);color:var(--text);transform:translateY(-2px)}
 .hero-socials{display:flex;gap:20px;justify-content:center}
-.hero-socials a{
-  display:flex;align-items:center;justify-content:center;
-  width:36px;height:36px;border-radius:8px;
-  border:1px solid var(--border);color:var(--text3);
-  transition:border-color .15s,color .15s;
-}
-.hero-socials a:hover{border-color:var(--border2);color:var(--text2)}
+.hero-socials a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;border:1px solid var(--border);color:var(--text3);transition:border-color .15s,color .15s,transform .15s,background .15s}
+.hero-socials a:hover{border-color:var(--purple);color:var(--purple);transform:translateY(-2px);background:var(--purple-dim)}
 
-/* ── SECTION CHROME ── */
+/* ── SECTION ── */
 .section{padding:80px 0;border-top:1px solid var(--border)}
 .section-head{text-align:center;margin-bottom:48px}
 .section-head h2{font-size:clamp(22px,3vw,30px);font-weight:700;letter-spacing:-0.02em;margin-bottom:10px}
 .section-head p{font-size:15px;color:var(--text2);max-width:500px;margin:0 auto}
 
 /* ── HIGHLIGHTS ── */
-.highlights{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
-  background:var(--border);border:1px solid var(--border);
-  border-radius:14px;overflow:hidden;
-  margin-bottom:0;
-}
-.hl-cell{
-  background:var(--bg2);padding:28px 20px;
-  display:flex;flex-direction:column;gap:4px;
-  align-items:center;text-align:center;
-}
-.hl-val{
-  font-size:32px;font-weight:700;letter-spacing:-0.04em;
-  background:linear-gradient(135deg,var(--purple),var(--green));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;line-height:1;
-}
+.highlights{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.hl-cell{background:var(--bg2);padding:28px 20px;display:flex;flex-direction:column;gap:4px;align-items:center;text-align:center;transition:background .2s}
+.hl-cell:hover{background:var(--bg3)}
+.hl-val{font-size:32px;font-weight:700;letter-spacing:-0.04em;background:linear-gradient(135deg,var(--purple),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
 .hl-lab{font-size:12px;color:var(--text2);line-height:1.4}
 
-/* ── EXPERIENCE TIMELINE ── */
+/* ── EXPERIENCE ── */
 .exp-wrap{display:flex;flex-direction:column;gap:16px}
-.exp-item{
-  display:grid;grid-template-columns:180px 1fr;gap:0;
-  background:var(--bg2);border:1px solid var(--border);border-radius:14px;
-  overflow:hidden;transition:border-color .15s;
-}
-.exp-item:hover{border-color:var(--border2)}
-.exp-sidebar{
-  padding:24px 20px;
-  border-right:1px solid var(--border);
-  display:flex;flex-direction:column;gap:6px;
-}
-.exp-period{
-  font-family:'Fira Code',monospace;
-  font-size:11px;color:var(--text3);line-height:1.4;
-}
-.exp-vertical{
-  display:flex;align-items:center;gap:6px;margin-top:4px;
-}
-.exp-dot{
-  width:8px;height:8px;border-radius:50%;
-  background:var(--purple);flex-shrink:0;
-}
+.exp-item{display:grid;grid-template-columns:180px 1fr;background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .2s,transform .2s,box-shadow .2s}
+.exp-item:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,0.25)}
+.exp-sidebar{padding:24px 20px;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:6px}
+.exp-period{font-family:'Fira Code',monospace;font-size:11px;color:var(--text3);line-height:1.4}
+.exp-vertical{display:flex;align-items:center;gap:6px;margin-top:4px}
+.exp-dot{width:8px;height:8px;border-radius:50%;background:var(--purple);flex-shrink:0}
 .exp-market{font-size:11px;color:var(--purple)}
 .exp-body{padding:24px 28px}
 .exp-title{font-size:15px;font-weight:600;letter-spacing:-0.01em;margin-bottom:4px}
 .exp-company{font-size:12px;color:var(--text3);margin-bottom:16px;font-family:'Fira Code',monospace}
 .exp-bullets{list-style:none;display:flex;flex-direction:column;gap:8px}
-.exp-bullets li{
-  font-size:13px;color:var(--text2);line-height:1.6;
-  padding-left:14px;position:relative;
-}
-.exp-bullets li::before{
-  content:'';position:absolute;left:0;top:8px;
-  width:4px;height:4px;border-radius:50%;
-  background:var(--border2);
-}
+.exp-bullets li{font-size:13px;color:var(--text2);line-height:1.6;padding-left:14px;position:relative}
+.exp-bullets li::before{content:'';position:absolute;left:0;top:8px;width:4px;height:4px;border-radius:50%;background:var(--border2)}
 .exp-bullets li strong{color:var(--text);font-weight:500}
-.exp-bullets li .num{
-  color:var(--green);font-family:'Fira Code',monospace;font-size:12px;
-}
+.exp-bullets li .num{color:var(--green);font-family:'Fira Code',monospace;font-size:12px}
 
 /* ── RESULTS ── */
-.results-note{
-  display:flex;align-items:flex-start;gap:10px;
-  background:var(--purple-dim);border:1px solid var(--purple-glow);
-  border-radius:10px;padding:14px 18px;margin-bottom:28px;
-}
+.results-note{display:flex;align-items:flex-start;gap:10px;background:var(--purple-dim);border:1px solid var(--purple-glow);border-radius:10px;padding:14px 18px;margin-bottom:28px}
 .results-note p{font-size:13px;color:var(--text2);line-height:1.6}
 .results-note svg{flex-shrink:0;margin-top:1px;color:var(--purple)}
-
 .results-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.result-card{
-  background:var(--bg2);border:1px solid var(--border);
-  border-radius:14px;padding:28px;
-  display:flex;flex-direction:column;gap:16px;
-  transition:border-color .15s;
-}
-.result-card:hover{border-color:var(--border2)}
-.result-tag{
-  font-family:'Fira Code',monospace;font-size:11px;
-  color:var(--text3);
-}
+.result-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:16px;transition:border-color .2s,transform .2s,box-shadow .2s}
+.result-card:hover{border-color:var(--purple);transform:translateY(-2px);box-shadow:0 8px 32px rgba(124,109,250,0.1)}
+.result-tag{font-family:'Fira Code',monospace;font-size:11px;color:var(--text3)}
 .result-title{font-size:14px;font-weight:600;letter-spacing:-0.01em;line-height:1.4}
 .result-desc{font-size:13px;color:var(--text2);line-height:1.6}
-.result-metrics{
-  display:flex;gap:20px;flex-wrap:wrap;
-  padding-top:16px;border-top:1px solid var(--border);
-}
+.result-metrics{display:flex;gap:20px;flex-wrap:wrap;padding-top:16px;border-top:1px solid var(--border)}
 .rm{display:flex;flex-direction:column;gap:3px}
-.rm-val{
-  font-size:22px;font-weight:700;letter-spacing:-0.04em;line-height:1;
-}
+.rm-val{font-size:22px;font-weight:700;letter-spacing:-0.04em;line-height:1}
 .rm-val.g{color:var(--green)}
 .rm-val.p{color:var(--purple)}
 .rm-lab{font-size:11px;color:var(--text3)}
 
-/* ── TECH STACK / SKILLS ── */
+/* ── STACK ── */
 .stack-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:20px}
-.stack-cell{
-  background:var(--bg2);border:1px solid var(--border);border-radius:10px;
-  padding:14px 14px 12px;display:flex;align-items:center;gap:10px;
-  transition:border-color .15s;
-}
-.stack-cell:hover{border-color:var(--border2)}
-.stack-icon{
-  width:28px;height:28px;border-radius:6px;
-  background:var(--purple-dim);display:flex;align-items:center;justify-content:center;
-  color:var(--purple);flex-shrink:0;font-size:12px;font-weight:700;font-family:'Fira Code',monospace;
-}
+.stack-cell{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 14px 12px;display:flex;align-items:center;gap:10px;transition:border-color .15s,transform .15s,background .15s}
+.stack-cell:hover{border-color:var(--purple);background:var(--bg3);transform:translateY(-2px)}
+.stack-icon{width:28px;height:28px;border-radius:6px;background:var(--purple-dim);display:flex;align-items:center;justify-content:center;color:var(--purple);flex-shrink:0;font-size:12px;font-weight:700;font-family:'Fira Code',monospace}
 .stack-name{font-size:13px;font-weight:500}
+.stack-also{display:flex;flex-wrap:wrap;gap:8px;padding-top:20px;border-top:1px solid var(--border)}
+.chip{font-size:12px;color:var(--text2);background:var(--bg2);border:1px solid var(--border);padding:5px 12px;border-radius:20px;transition:border-color .15s,color .15s,transform .15s}
+.chip:hover{border-color:var(--purple);color:var(--text);transform:translateY(-1px)}
 
-.stack-also{
-  display:flex;flex-wrap:wrap;gap:8px;
-  padding-top:20px;border-top:1px solid var(--border);
-}
-.chip{
-  font-size:12px;color:var(--text2);
-  background:var(--bg2);border:1px solid var(--border);
-  padding:5px 12px;border-radius:20px;
-}
-
-/* ── EXPERTISE / AREAS ── */
+/* ── EXPERTISE ── */
 .expertise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.exp-area{
-  background:var(--bg2);border:1px solid var(--border);border-radius:14px;
-  padding:24px;transition:border-color .15s;
-}
-.exp-area:hover{border-color:var(--border2)}
-.exp-area-icon{
-  width:36px;height:36px;border-radius:8px;
-  background:var(--purple-dim);
-  display:flex;align-items:center;justify-content:center;
-  color:var(--purple);margin-bottom:14px;
-}
+.exp-area{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:24px;transition:border-color .2s,transform .2s}
+.exp-area:hover{border-color:var(--border2);transform:translateY(-2px)}
+.exp-area-icon{width:36px;height:36px;border-radius:8px;background:var(--purple-dim);display:flex;align-items:center;justify-content:center;color:var(--purple);margin-bottom:14px}
 .exp-area h3{font-size:14px;font-weight:600;margin-bottom:8px}
 .exp-area p{font-size:13px;color:var(--text2);line-height:1.6}
 .exp-area ul{list-style:none;display:flex;flex-direction:column;gap:5px;margin-top:12px}
-.exp-area ul li{
-  font-size:12px;color:var(--text2);
-  padding-left:12px;position:relative;
-}
-.exp-area ul li::before{
-  content:'';position:absolute;left:0;top:7px;
-  width:3px;height:3px;border-radius:50%;background:var(--purple);
-}
+.exp-area ul li{font-size:12px;color:var(--text2);padding-left:12px;position:relative}
+.exp-area ul li::before{content:'';position:absolute;left:0;top:7px;width:3px;height:3px;border-radius:50%;background:var(--purple)}
 
-/* ── FAQ ── */
-.faq-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden}
-.faq-item{
-  border-bottom:1px solid var(--border);
-  padding:20px 24px;
-}
+/* ── FAQ INTERACTIVE ── */
+.faq-list{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.faq-item{border-bottom:1px solid var(--border);overflow:hidden}
 .faq-item:last-child{border-bottom:none}
-.faq-q{font-size:14px;font-weight:500;color:var(--text);margin-bottom:10px}
-.faq-a{font-size:13px;color:var(--text2);line-height:1.7}
+.faq-trigger{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:20px 24px;cursor:pointer;background:none;border:none;text-align:left;
+  transition:background .15s;
+}
+.faq-trigger:hover{background:var(--bg3)}
+.faq-item.open .faq-trigger{background:var(--bg3)}
+.faq-q{font-size:14px;font-weight:500;color:var(--text);line-height:1.4}
+.faq-chevron{
+  width:22px;height:22px;border-radius:6px;border:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--text3);flex-shrink:0;
+  transition:background .2s,border-color .2s,color .2s,transform .35s cubic-bezier(.22,1,.36,1);
+}
+.faq-item.open .faq-chevron{background:var(--purple-dim);border-color:var(--purple);color:var(--purple);transform:rotate(180deg)}
+.faq-body{max-height:0;overflow:hidden;transition:max-height .42s cubic-bezier(.22,1,.36,1),opacity .3s ease;opacity:0}
+.faq-item.open .faq-body{opacity:1}
+.faq-a{font-size:13px;color:var(--text2);line-height:1.75;padding:0 24px 20px}
 .faq-a strong{color:var(--text);font-weight:500}
-.faq-a a{color:var(--purple)}
+.faq-a a{color:var(--purple);transition:opacity .15s}
+.faq-a a:hover{opacity:.8;text-decoration:underline}
 
 /* ── CONTACT ── */
-.contact-section{
-  padding:80px 0 60px;border-top:1px solid var(--border);
-}
-.contact-form-wrap{
-  background:var(--bg2);border:1px solid var(--border);border-radius:16px;
-  padding:40px;max-width:640px;margin:0 auto;
-}
+.contact-section{padding:80px 0 60px;border-top:1px solid var(--border)}
+.contact-form-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:40px;max-width:640px;margin:0 auto}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
 .form-group{display:flex;flex-direction:column;gap:6px}
 .form-group label{font-size:12px;color:var(--text2);font-family:'Fira Code',monospace}
-.form-group input,.form-group textarea{
-  background:var(--bg3);border:1px solid var(--border2);
-  border-radius:8px;padding:10px 14px;
+.form-group input,.form-group textarea,.form-group select{
+  background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:10px 14px;
   font-family:'Inter',sans-serif;font-size:13px;color:var(--text);
-  outline:none;transition:border-color .15s;resize:none;
+  outline:none;transition:border-color .15s,box-shadow .15s;resize:none;width:100%;
+}
+.form-group select{
+  appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2355556a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;cursor:pointer;
 }
 .form-group input::placeholder,.form-group textarea::placeholder{color:var(--text3)}
-.form-group input:focus,.form-group textarea:focus{border-color:var(--purple)}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(124,109,250,0.12)}
 .form-full{margin-bottom:14px}
-.btn-send{
-  width:100%;padding:12px;border-radius:8px;border:none;cursor:pointer;
-  background:var(--purple);color:#fff;font-size:14px;font-weight:500;
-  font-family:'Inter',sans-serif;transition:opacity .15s;
-}
-.btn-send:hover{opacity:.85}
-
-.direct-reach{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
-  max-width:640px;margin:28px auto 0;
-}
-.reach-card{
-  background:var(--bg2);border:1px solid var(--border);border-radius:12px;
-  padding:20px 16px;display:flex;flex-direction:column;gap:10px;
-  transition:border-color .15s;
-}
-.reach-card:hover{border-color:var(--border2)}
+.btn-send{width:100%;padding:12px;border-radius:8px;border:none;cursor:pointer;background:var(--purple);color:#fff;font-size:14px;font-weight:500;font-family:'Inter',sans-serif;transition:opacity .15s,transform .15s,box-shadow .15s}
+.btn-send:hover{opacity:.88;transform:translateY(-1px);box-shadow:0 6px 20px rgba(124,109,250,0.4)}
+.prefer-talk{text-align:center;margin-top:16px;font-size:13px;color:var(--text3)}
+.prefer-talk a{color:var(--purple);transition:opacity .15s}
+.prefer-talk a:hover{opacity:.8;text-decoration:underline}
+.direct-reach{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:640px;margin:28px auto 0}
+.reach-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px 16px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s,transform .2s,box-shadow .2s}
+.reach-card:hover{border-color:var(--purple);transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,109,250,0.1)}
 .reach-icon{color:var(--purple)}
 .reach-label{font-family:'Fira Code',monospace;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em}
 .reach-value{font-size:13px;font-weight:500;color:var(--text)}
 
+/* ── FLOATING NAV ── */
+#section-indicator{
+  position:fixed;left:20px;top:50%;transform:translateY(-50%) scale(0.96);
+  z-index:90;width:180px;
+  background:rgba(13,13,18,0.92);border:1px solid var(--border2);border-radius:12px;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  opacity:0;pointer-events:none;
+  transition:opacity .3s,transform .3s;
+  overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.4);
+}
+.si-item{display:flex;align-items:center;gap:10px;cursor:pointer;padding:8px 10px;border-radius:7px;transition:background .15s}
+.si-item:hover{background:var(--purple-dim)}
+.si-item:hover .si-dot{background:var(--purple);transform:scale(1.3)}
+.si-item:hover .si-label{color:var(--text)}
+.si-item.active{background:var(--purple-dim)}
+.si-item.active .si-dot{background:var(--purple);transform:scale(1.4);box-shadow:0 0 6px var(--purple-glow)}
+.si-item.active .si-label{color:var(--purple);font-weight:500}
+.si-dot{width:6px;height:6px;border-radius:50%;background:var(--border2);flex-shrink:0;transition:background .2s,transform .2s,box-shadow .2s}
+.si-label{font-family:'Fira Code',monospace;font-size:12px;color:var(--text2);transition:color .15s;white-space:nowrap}
+
 /* ── FOOTER ── */
-footer{
-  border-top:1px solid var(--border);
-  padding:40px 0 env(safe-area-inset-bottom,24px);
-}
-.footer-inner{
-  max-width:1100px;margin:0 auto;padding:0 32px;
-  display:grid;grid-template-columns:1fr auto auto auto;gap:40px;align-items:start;
-}
+footer{border-top:1px solid var(--border);padding:40px 0 env(safe-area-inset-bottom,24px)}
+.footer-inner{max-width:1100px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1fr auto auto auto;gap:40px;align-items:start}
 .footer-brand{display:flex;flex-direction:column;gap:8px}
 .footer-brand-name{font-size:14px;font-weight:600;letter-spacing:-0.01em}
 .footer-brand-desc{font-size:12px;color:var(--text3);line-height:1.5;max-width:220px}
@@ -364,18 +262,17 @@ footer{
 .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
 .footer-col ul a{font-size:13px;color:var(--text2);transition:color .15s}
 .footer-col ul a:hover{color:var(--text)}
-.footer-bottom{
-  max-width:1100px;margin:28px auto 0;padding:20px 32px 0;
-  border-top:1px solid var(--border);
-  display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
-}
+.footer-bottom{max-width:1100px;margin:28px auto 0;padding:20px 32px 0;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
 .footer-bottom p{font-size:12px;color:var(--text3)}
 .footer-bottom a{font-size:12px;color:var(--text3);transition:color .15s}
 .footer-bottom a:hover{color:var(--text2)}
 
 /* ── RESPONSIVE ── */
-
-/* Tablet: 641–900px */
+@media(max-width:900px){
+  #section-indicator{display:none!important}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:28px}
+  .footer-brand{grid-column:1/-1}
+}
 @media(min-width:641px) and (max-width:900px){
   .wrap,.wrap-narrow{padding:0 24px}
   .nav-links{display:none}
@@ -384,90 +281,54 @@ footer{
   .stack-cols{grid-template-columns:repeat(3,1fr)}
   .expertise-grid{grid-template-columns:repeat(2,1fr)}
   .results-grid{grid-template-columns:1fr}
-  .footer-inner{grid-template-columns:1fr 1fr;gap:28px}
-  .footer-brand{grid-column:1/-1}
   .direct-reach{grid-template-columns:repeat(3,1fr)}
   .exp-item{grid-template-columns:140px 1fr}
 }
-
-/* Mobile: ≤640px */
 @media(max-width:640px){
   .wrap,.wrap-narrow{padding:0 16px}
   .nav-links{display:none}
   .nav-btn{font-size:12px;padding:6px 14px}
   .nav-inner{padding:12px 16px}
-
-  /* Hero */
   .hero{padding:90px 0 48px}
-  .hero-avatar{width:72px;height:72px;font-size:26px}
+  .hero-avatar{width:72px;height:72px}
   .hero h1{font-size:28px}
   .hero-role{font-size:14px}
   .hero-bio{font-size:14px}
   .btn-solid,.btn-outline{font-size:13px;padding:9px 18px}
-
-  /* Highlights */
   .highlights{grid-template-columns:repeat(2,1fr)}
   .hl-val{font-size:24px}
   .hl-cell{padding:20px 14px}
-
-  /* Section */
   .section{padding:56px 0}
   .section-head{margin-bottom:32px}
   .section-head h2{font-size:22px}
-
-  /* Experience */
   .exp-item{grid-template-columns:1fr}
-  .exp-sidebar{
-    border-right:none;
-    border-bottom:1px solid var(--border);
-    padding:14px 18px;
-    flex-direction:row;
-    align-items:center;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:8px;
-  }
+  .exp-sidebar{border-right:none;border-bottom:1px solid var(--border);padding:14px 18px;flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
   .exp-period{font-size:10px}
   .exp-body{padding:18px}
   .exp-title{font-size:14px}
   .exp-bullets li{font-size:13px}
-
-  /* Results */
   .results-grid{grid-template-columns:1fr}
   .result-card{padding:20px}
   .rm-val{font-size:18px}
-
-  /* Stack */
   .stack-cols{grid-template-columns:repeat(2,1fr)}
   .stack-cell{padding:10px 12px;gap:8px}
   .stack-name{font-size:12px}
-
-  /* Expertise */
   .expertise-grid{grid-template-columns:1fr}
   .exp-area{padding:18px}
-
-  /* FAQ */
-  .faq-item{padding:16px 18px}
+  .faq-trigger{padding:16px 18px}
   .faq-q{font-size:13px}
-  .faq-a{font-size:12px}
-
-  /* Contact */
+  .faq-a{font-size:12px;padding:0 18px 16px}
+  .contact-section{padding:56px 0 48px}
   .contact-form-wrap{padding:24px 18px}
   .form-row{grid-template-columns:1fr}
   .direct-reach{grid-template-columns:1fr;max-width:100%}
   .reach-card{flex-direction:row;align-items:center;gap:14px;padding:16px}
-
-  /* Footer */
   .footer-inner{grid-template-columns:1fr;gap:24px;padding:0 16px}
   .footer-brand{grid-column:auto}
   .footer-bottom{padding:16px 16px 0;flex-direction:column;align-items:flex-start;gap:8px}
   .footer-col{display:none}
-
-  /* Hero socials */
   .hero-socials{gap:14px}
 }
-
-/* Small phones: ≤380px */
 @media(max-width:380px){
   .hero h1{font-size:24px}
   .highlights{grid-template-columns:1fr 1fr}
@@ -476,200 +337,39 @@ footer{
   .hero-btns{flex-direction:column;align-items:center}
   .btn-solid,.btn-outline{width:100%;justify-content:center}
 }
-
-/* Mobile bottom nav bar */
 @media(max-width:640px){
-  .mobile-nav{
-    display:flex;
-    position:fixed;
-    bottom:0;left:0;right:0;
-    z-index:200;
-    background:rgba(13,13,18,0.92);
-    backdrop-filter:blur(16px);
-    -webkit-backdrop-filter:blur(16px);
-    border-top:1px solid var(--border);
-    padding:8px 0 env(safe-area-inset-bottom,8px);
-    justify-content:space-around;
-  }
-  .mobile-nav a{
-    display:flex;flex-direction:column;align-items:center;gap:3px;
-    color:var(--text3);font-size:10px;font-family:'Fira Code',monospace;
-    padding:4px 8px;transition:color .15s;
-  }
+  .mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:200;background:rgba(13,13,18,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--border);padding:8px 0 env(safe-area-inset-bottom,8px);justify-content:space-around}
+  .mobile-nav a{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--text3);font-size:10px;font-family:'Fira Code',monospace;padding:4px 8px;transition:color .15s}
   .mobile-nav a.active,.mobile-nav a:hover{color:var(--purple)}
   .mobile-nav svg{width:18px;height:18px}
   body{padding-bottom:calc(56px + env(safe-area-inset-bottom,0px))}
 }
-@media(min-width:641px){
-  .mobile-nav{display:none}
-}
+@media(min-width:641px){.mobile-nav{display:none}}
 </style>
 </head>
 <body>
 
-<!-- Orbs -->
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 
-<!-- Floating nav panel -->
-<div id="section-indicator" style="
-  position:fixed;left:20px;top:50%;transform:translateY(-50%);
-  z-index:90;width:180px;
-  background:rgba(13,13,18,0.92);
-  border:1px solid var(--border2);
-  border-radius:12px;
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  opacity:0;pointer-events:none;
-  transition:opacity .3s,transform .3s;
-  transform:translateY(-50%) scale(0.96);
-  overflow:hidden;
-  box-shadow:0 8px 32px rgba(0,0,0,0.4);
-">
-  <!-- Header -->
-  <div style="padding:12px 14px 10px;border-bottom:1px solid var(--border);">
-    <span style="font-family:'Fira Code',monospace;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;">Sections</span>
+<!-- Floating nav -->
+<div id="section-indicator">
+  <div style="padding:12px 14px 10px;border-bottom:1px solid var(--border)">
+    <span style="font-family:'Fira Code',monospace;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em">Sections</span>
   </div>
-  <!-- Nav items -->
-  <div style="padding:6px;">
-    <div class="si-item" data-section="highlights">
-      <div class="si-dot"></div>
-      <span class="si-label">Results</span>
-    </div>
-    <div class="si-item" data-section="experience">
-      <div class="si-dot"></div>
-      <span class="si-label">Experience</span>
-    </div>
-    <div class="si-item" data-section="results">
-      <div class="si-dot"></div>
-      <span class="si-label">Case Studies</span>
-    </div>
-    <div class="si-item" data-section="skills">
-      <div class="si-dot"></div>
-      <span class="si-label">Tech Stack</span>
-    </div>
-    <div class="si-item" data-section="expertise">
-      <div class="si-dot"></div>
-      <span class="si-label">Expertise</span>
-    </div>
-    <div class="si-item" data-section="faq">
-      <div class="si-dot"></div>
-      <span class="si-label">FAQ</span>
-    </div>
-    <div class="si-item" data-section="contact">
-      <div class="si-dot"></div>
-      <span class="si-label">Contact</span>
-    </div>
+  <div style="padding:6px">
+    <div class="si-item" data-section="highlights"><div class="si-dot"></div><span class="si-label">Results</span></div>
+    <div class="si-item" data-section="experience"><div class="si-dot"></div><span class="si-label">Experience</span></div>
+    <div class="si-item" data-section="results"><div class="si-dot"></div><span class="si-label">Case Studies</span></div>
+    <div class="si-item" data-section="skills"><div class="si-dot"></div><span class="si-label">Tech Stack</span></div>
+    <div class="si-item" data-section="expertise"><div class="si-dot"></div><span class="si-label">Expertise</span></div>
+    <div class="si-item" data-section="faq"><div class="si-dot"></div><span class="si-label">FAQ</span></div>
+    <div class="si-item" data-section="contact"><div class="si-dot"></div><span class="si-label">Contact</span></div>
   </div>
 </div>
 
-<style>
-.si-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  padding: 8px 10px;
-  border-radius: 7px;
-  transition: background .15s;
-  position: relative;
-}
-.si-item:hover {
-  background: var(--purple-dim);
-}
-.si-item:hover .si-dot {
-  background: var(--purple);
-  transform: scale(1.3);
-}
-.si-item:hover .si-label {
-  color: var(--text);
-}
-.si-item.active {
-  background: var(--purple-dim);
-}
-.si-item.active .si-dot {
-  background: var(--purple);
-  transform: scale(1.4);
-  box-shadow: 0 0 6px var(--purple-glow);
-}
-.si-item.active .si-label {
-  color: var(--purple);
-  font-weight: 500;
-}
-.si-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--border2);
-  flex-shrink: 0;
-  transition: background .2s, transform .2s, box-shadow .2s;
-}
-.si-label {
-  font-family: 'Fira Code', monospace;
-  font-size: 12px;
-  color: var(--text2);
-  transition: color .15s;
-  white-space: nowrap;
-}
-@media(max-width:900px){
-  #section-indicator,#si-toggle { display: none !important; }
-}
-</style>
-
-<script>
-(function(){
-  const panel = document.getElementById('section-indicator');
-  const siItems = panel.querySelectorAll('.si-item');
-  const mobileLinks = document.querySelectorAll('#mobile-nav a');
-  const sections = ['highlights','experience','results','skills','expertise','faq','contact'];
-
-  function getActive(){
-    const mid = window.innerHeight * 0.45;
-    let active = null;
-    for(const id of sections){
-      const el = document.getElementById(id);
-      if(!el) continue;
-      if(el.getBoundingClientRect().top <= mid) active = id;
-    }
-    return active;
-  }
-
-  function update(){
-    const scrollY = window.scrollY;
-    const heroH = document.querySelector('.hero')?.offsetHeight || 400;
-    const pastHero = scrollY > heroH * 0.6;
-
-    panel.style.opacity = pastHero ? '1' : '0';
-    panel.style.pointerEvents = pastHero ? 'auto' : 'none';
-    panel.style.transform = pastHero ? 'translateY(-50%) scale(1)' : 'translateY(-50%) scale(0.96)';
-
-    const active = getActive();
-    siItems.forEach(item => item.classList.toggle('active', item.dataset.section === active));
-    mobileLinks.forEach(link => link.classList.toggle('active', link.dataset.section === active));
-  }
-
-  siItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const el = document.getElementById(item.dataset.section);
-      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
-    });
-  });
-
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const el = document.getElementById(link.getAttribute('href').replace('#',''));
-      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
-    });
-  });
-
-  window.addEventListener('scroll', update, {passive:true});
-  window.addEventListener('resize', update, {passive:true});
-  update();
-})();
-</script>
-
 <!-- Nav -->
-<nav>
+<nav class="top-nav">
   <div class="nav-inner">
     <span class="nav-logo">Hans Lacida</span>
     <ul class="nav-links">
@@ -689,17 +389,17 @@ footer{
   <!-- Hero -->
   <div class="hero">
     <div class="wrap">
-      <div class="hero-avatar" style="padding:0;overflow:hidden;background:none;">
-        <img src="https://i.ibb.co/1fWcjGrw/ppchans-media-profile.png" alt="Hans Lacida" style="width:100%;height:100%;object-fit:cover;border-radius:50%;object-position:center 15%;">
+      <div class="hero-avatar reveal-scale" style="transition-delay:.08s">
+        <img src="https://i.ibb.co/1fWcjGrw/ppchans-media-profile.png" alt="Hans Lacida">
       </div>
-      <h1>Hans Lacida</h1>
-      <p class="hero-role">Performance Marketing Manager · Google Ads Expert</p>
-      <p class="hero-bio">
+      <h1 class="reveal" style="transition-delay:.18s">Hans Lacida</h1>
+      <p class="hero-role reveal" style="transition-delay:.26s">Performance Marketing Manager · Google Ads Expert</p>
+      <p class="hero-bio reveal" style="transition-delay:.34s">
         Building scalable paid acquisition systems — from search infrastructure to AI-native campaign execution.<br>
         <strong>10+ years delivering revenue-focused results</strong> across e-commerce, healthcare, and B2B in the US and Australia.
       </p>
-      <p style="font-size:13px;color:var(--text3);margin-bottom:28px;font-family:'Fira Code',monospace;">Open to B2B contracts and full-time roles.</p>
-      <div class="hero-btns">
+      <span class="hero-tag reveal" style="transition-delay:.40s">Open to B2B contracts and full-time roles.</span>
+      <div class="hero-btns reveal" style="transition-delay:.48s">
         <a href="#experience" class="btn-solid">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
           View Experience
@@ -709,32 +409,21 @@ footer{
           View CV
         </a>
       </div>
-      <div class="hero-socials">
-        <a href="mailto:hanzel@hanslacida.com" title="Email">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        </a>
-        <a href="https://wa.me/639761053409" target="_blank" rel="noopener" title="WhatsApp">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-        </a>
-        <a href="https://cal.com/hanslacida" target="_blank" rel="noopener" title="Book a call">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-        </a>
-        <a href="https://hanslacida.com" target="_blank" rel="noopener" title="Website">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </a>
+      <div class="hero-socials reveal" style="transition-delay:.56s">
+        <a href="mailto:hanzel@hanslacida.com" title="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+        <a href="https://wa.me/639761053409" target="_blank" rel="noopener" title="WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+        <a href="https://cal.com/hanslacida" target="_blank" rel="noopener" title="Book a call"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></a>
+        <a href="https://hanslacida.com" target="_blank" rel="noopener" title="Website"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></a>
       </div>
     </div>
   </div>
 
-  <!-- Career Highlights -->
+  <!-- Highlights -->
   <div id="highlights" class="section">
     <div class="wrap">
-      <div class="section-head">
-        <h2>Career Highlights</h2>
-        <p>Numbers from real accounts, real clients, real optimization windows.</p>
-      </div>
-      <div class="highlights">
-        <div class="hl-cell"><div class="hl-val">$550M+</div><div class="hl-lab">Attributed client revenue</div></div>
+      <div class="section-head reveal"><h2>Career Highlights</h2><p>Numbers from real accounts, real clients, real optimization windows.</p></div>
+      <div class="highlights stagger">
+        <div class="hl-cell"><div class="hl-val">10+ Yrs</div><div class="hl-lab">Hands-on paid acquisition experience</div></div>
         <div class="hl-cell"><div class="hl-val">70×</div><div class="hl-lab">Peak ROAS — AU/NZ eCommerce</div></div>
         <div class="hl-cell"><div class="hl-val">−53%</div><div class="hl-lab">CPA reduction — Healthcare</div></div>
         <div class="hl-cell"><div class="hl-val">$10M+</div><div class="hl-lab">Ad spend managed</div></div>
@@ -745,98 +434,28 @@ footer{
   <!-- Experience -->
   <div id="experience" class="section">
     <div class="wrap">
-      <div class="section-head">
-        <h2>Experience</h2>
-        <p>10+ years of paid acquisition, operator-level depth across every major vertical.</p>
-      </div>
+      <div class="section-head reveal"><h2>Experience</h2><p>10+ years of paid acquisition, operator-level depth across every major vertical.</p></div>
       <div class="exp-wrap">
-
-        <div class="exp-item">
-          <div class="exp-sidebar">
-            <div class="exp-period">Nov 2023<br>Sep 2026</div>
-            <div class="exp-vertical"><div class="exp-dot"></div><span class="exp-market">US Market</span></div>
-          </div>
-          <div class="exp-body">
-            <div class="exp-title">Google Ads Specialist — eCommerce (HVAC / Shopify)</div>
-            <div class="exp-company">Direct Client · US</div>
-            <ul class="exp-bullets">
-              <li>Owned Search, Shopping, and PMax campaigns supporting <span class="num">$897K–$1.02M</span> in monthly sales across 35+ months</li>
-              <li>Conversion tracking cleanup <strong>doubled reportable e-commerce conversions in one month</strong> without changing spend</li>
-              <li>Maintained data integrity across product feeds, campaign structures, and attribution settings so Google's AI bid on clean signals</li>
-              <li>Aligned ad strategy with inventory, promotions, and revenue targets through direct collaboration with operations and sales leadership</li>
-            </ul>
-          </div>
+        <div class="exp-item reveal-up" style="transition-delay:.04s">
+          <div class="exp-sidebar"><div class="exp-period">Nov 2023<br>Sep 2026</div><div class="exp-vertical"><div class="exp-dot"></div><span class="exp-market">US Market</span></div></div>
+          <div class="exp-body"><div class="exp-title">Google Ads Specialist — eCommerce (HVAC / Shopify)</div><div class="exp-company">Direct Client · US</div><ul class="exp-bullets"><li>Owned Search, Shopping, and PMax campaigns supporting <span class="num">$897K–$1.02M</span> in monthly sales across 35+ months</li><li>Conversion tracking cleanup <strong>doubled reportable e-commerce conversions in one month</strong> without changing spend</li><li>Maintained data integrity across product feeds, campaign structures, and attribution settings so Google's AI bid on clean signals</li><li>Aligned ad strategy with inventory, promotions, and revenue targets through direct collaboration with operations and sales leadership</li></ul></div>
         </div>
-
-        <div class="exp-item">
-          <div class="exp-sidebar">
-            <div class="exp-period">Oct 2024<br>May 2025</div>
-            <div class="exp-vertical"><div class="exp-dot"></div><span class="exp-market">US Agency</span></div>
-          </div>
-          <div class="exp-body">
-            <div class="exp-title">Paid Search Manager — Healthcare Marketing Agency</div>
-            <div class="exp-company">Remote · US</div>
-            <ul class="exp-bullets">
-              <li>Managed a <span class="num">$300K/month</span> Google Ads healthcare program across Search and Display, including budget pacing and account audits</li>
-              <li>Built lead segmentation logic that improved conversion tracking accuracy by <strong>15%</strong> and routed qualified leads to the right campaigns</li>
-              <li>Corrected attribution inconsistencies across client reporting — decisions made on accurate data, not inflated platform numbers</li>
-              <li>Collaborated with account managers and creative teams to align copy, offers, and landing pages with campaign intent</li>
-            </ul>
-          </div>
+        <div class="exp-item reveal-up" style="transition-delay:.09s">
+          <div class="exp-sidebar"><div class="exp-period">Oct 2024<br>May 2025</div><div class="exp-vertical"><div class="exp-dot"></div><span class="exp-market">US Agency</span></div></div>
+          <div class="exp-body"><div class="exp-title">Paid Search Manager — Healthcare Marketing Agency</div><div class="exp-company">Remote · US</div><ul class="exp-bullets"><li>Managed a <span class="num">$300K/month</span> Google Ads healthcare program across Search and Display, including budget pacing and account audits</li><li>Built lead segmentation logic that improved conversion tracking accuracy by <strong>15%</strong> and routed qualified leads to the right campaigns</li><li>Corrected attribution inconsistencies across client reporting — decisions made on accurate data, not inflated platform numbers</li><li>Collaborated with account managers and creative teams to align copy, offers, and landing pages with campaign intent</li></ul></div>
         </div>
-
-        <div class="exp-item">
-          <div class="exp-sidebar">
-            <div class="exp-period">Oct 2022<br>Aug 2026</div>
-            <div class="exp-vertical"><div class="exp-dot"></div><span class="exp-market">US & AU</span></div>
-          </div>
-          <div class="exp-body">
-            <div class="exp-title">Independent Google Ads Consultant</div>
-            <div class="exp-company">Remote · US & AU Markets</div>
-            <ul class="exp-bullets">
-              <li>Planned, launched, and optimized Search, Shopping, and PMax campaigns across e-commerce, healthcare, and B2B</li>
-              <li>Implemented GA4 and GTM tracking end-to-end — accurate attribution for revenue and lead generation clients</li>
-              <li>Conducted recurring account audits to surface tracking gaps, wasted spend, and targeting inefficiencies</li>
-              <li>Built automated Looker Studio dashboards for clear leadership visibility into spend, ROAS, CAC, and pipeline</li>
-              <li><strong>Directed and reviewed work of junior media buyers</strong> — established QA standards and naming conventions across multi-account teams</li>
-            </ul>
-          </div>
+        <div class="exp-item reveal-up" style="transition-delay:.14s">
+          <div class="exp-sidebar"><div class="exp-period">Oct 2022<br>Aug 2026</div><div class="exp-vertical"><div class="exp-dot"></div><span class="exp-market">US & AU</span></div></div>
+          <div class="exp-body"><div class="exp-title">Independent Google Ads Consultant</div><div class="exp-company">Remote · US & AU Markets</div><ul class="exp-bullets"><li>Planned, launched, and optimized Search, Shopping, and PMax campaigns across e-commerce, healthcare, and B2B</li><li>Implemented GA4 and GTM tracking end-to-end — accurate attribution for revenue and lead generation clients</li><li>Conducted recurring account audits to surface tracking gaps, wasted spend, and targeting inefficiencies</li><li>Built automated Looker Studio dashboards for clear leadership visibility into spend, ROAS, CAC, and pipeline</li><li><strong>Directed and reviewed work of junior media buyers</strong> — established QA standards and naming conventions across multi-account teams</li></ul></div>
         </div>
-
-        <div class="exp-item">
-          <div class="exp-sidebar">
-            <div class="exp-period">Oct 2022<br>Oct 2023</div>
-            <div class="exp-vertical"><div class="exp-dot"></div><span class="exp-market">US Agency</span></div>
-          </div>
-          <div class="exp-body">
-            <div class="exp-title">Media Buyer — US Digital Marketing Agency</div>
-            <div class="exp-company">Remote · US</div>
-            <ul class="exp-bullets">
-              <li>Managed Google Ads and Meta Ads across <span class="num">50+ client accounts</span> simultaneously — owned campaign QA and performance reporting</li>
-              <li>Built automated Looker Studio dashboards used by account managers and leadership for cross-account visibility</li>
-              <li>Standardized campaign structures and naming conventions across the team — reduced handoff friction, improved reporting clarity</li>
-              <li>Led new client onboarding: tracking audits, conversion goal setup, initial strategy, and 30-day benchmarks</li>
-            </ul>
-          </div>
+        <div class="exp-item reveal-up" style="transition-delay:.19s">
+          <div class="exp-sidebar"><div class="exp-period">Oct 2022<br>Oct 2023</div><div class="exp-vertical"><div class="exp-dot"></div><span class="exp-market">US Agency</span></div></div>
+          <div class="exp-body"><div class="exp-title">Media Buyer — US Digital Marketing Agency</div><div class="exp-company">Remote · US</div><ul class="exp-bullets"><li>Managed Google Ads and Meta Ads across <span class="num">50+ client accounts</span> simultaneously — owned campaign QA and performance reporting</li><li>Built automated Looker Studio dashboards used by account managers and leadership for cross-account visibility</li><li>Standardized campaign structures and naming conventions across the team — reduced handoff friction, improved reporting clarity</li><li>Led new client onboarding: tracking audits, conversion goal setup, initial strategy, and 30-day benchmarks</li></ul></div>
         </div>
-
-        <div class="exp-item">
-          <div class="exp-sidebar">
-            <div class="exp-period">Jun 2020<br>Jan 2023</div>
-            <div class="exp-vertical"><div class="exp-dot"></div><span class="exp-market">Australia</span></div>
-          </div>
-          <div class="exp-body">
-            <div class="exp-title">Google Ads Manager — Alpine Safes & MaxStandout Marketing</div>
-            <div class="exp-company">Australia</div>
-            <ul class="exp-bullets">
-              <li>Owned campaign structure, keyword strategy, and attribution setup for service-based clients across Search and Display</li>
-              <li>Drove <span class="num">3× inbound call growth</span> through keyword segmentation, negative keyword discipline, and bid strategy refinement</li>
-              <li>Managed campaigns generating <span class="num">112M+ tracked impressions</span> — optimized for call quality, not just volume</li>
-              <li>Coordinated with sales and ops to align ad performance with actual business outcomes, not platform vanity metrics</li>
-            </ul>
-          </div>
+        <div class="exp-item reveal-up" style="transition-delay:.24s">
+          <div class="exp-sidebar"><div class="exp-period">Jun 2020<br>Jan 2023</div><div class="exp-vertical"><div class="exp-dot"></div><span class="exp-market">Australia</span></div></div>
+          <div class="exp-body"><div class="exp-title">Google Ads Manager — Alpine Safes & MaxStandout Marketing</div><div class="exp-company">Australia</div><ul class="exp-bullets"><li>Owned campaign structure, keyword strategy, and attribution setup for service-based clients across Search and Display</li><li>Drove <span class="num">3× inbound call growth</span> through keyword segmentation, negative keyword discipline, and bid strategy refinement</li><li>Managed campaigns generating <span class="num">112M+ tracked impressions</span> — optimized for call quality, not just volume</li><li>Coordinated with sales and ops to align ad performance with actual business outcomes, not platform vanity metrics</li></ul></div>
         </div>
-
       </div>
     </div>
   </div>
@@ -844,73 +463,27 @@ footer{
   <!-- Results -->
   <div id="results" class="section">
     <div class="wrap">
-      <div class="section-head">
-        <h2>Selected Results</h2>
-        <p>Modern tools, proven techniques, and systems designed to scale.</p>
-      </div>
-
-      <div class="results-note">
+      <div class="section-head reveal"><h2>Selected Results</h2><p>Modern tools, proven techniques, and systems designed to scale.</p></div>
+      <div class="results-note reveal">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
         <p>Live account walkthroughs are available on request — conducted as a recorded screen-share session with me. If you'd like to see a real account in action, reach out and we'll schedule it.</p>
       </div>
-
-      <div class="results-grid">
-
-        <div class="result-card">
-          <div class="result-tag">eCommerce · AU/NZ · eBike & Sporting Goods · 90 Days</div>
-          <div class="result-title">Peak 70× ROAS — rebuilt PMax and Search from the ground up</div>
-          <div class="result-desc">Fragmented campaigns, weak geo targeting, high wasted spend. Rebuilt structure, applied daily discipline, strong BFCM results within 90 days across AU and NZ.</div>
-          <div class="result-metrics">
-            <div class="rm"><div class="rm-val g">70×</div><div class="rm-lab">Peak ROAS</div></div>
-            <div class="rm"><div class="rm-val p">+50%</div><div class="rm-lab">Growth in 30 days</div></div>
-          </div>
-        </div>
-
-        <div class="result-card">
-          <div class="result-tag">Healthcare · Lead Gen · California · 90 Days</div>
-          <div class="result-title">CPA cut from $115 to $54 — zero baseline to $4K+/month spend</div>
-          <div class="result-desc">No attribution, no conversion clarity, $0 in active spend. Rebuilt account, integrated CallTrackingMetrics, fixed tracking end-to-end, segmented by intent.</div>
-          <div class="result-metrics">
-            <div class="rm"><div class="rm-val g">−53%</div><div class="rm-lab">CPA reduction</div></div>
-            <div class="rm"><div class="rm-val p">47</div><div class="rm-lab">Qualified leads, month 1</div></div>
-          </div>
-        </div>
-
-        <div class="result-card">
-          <div class="result-tag">B2B · Enterprise · Engine Manufacturing · US · 9 Months</div>
-          <div class="result-title">$300K → $150K spend. Conversions up 50%.</div>
-          <div class="result-desc">Spending $300K/month with a $23 CPA that didn't justify the budget. Deep audit, restructured bids by time/location/audience, A/B tested landing pages.</div>
-          <div class="result-metrics">
-            <div class="rm"><div class="rm-val g">−39%</div><div class="rm-lab">CPA: $23 → $14</div></div>
-            <div class="rm"><div class="rm-val p">+50%</div><div class="rm-lab">Conversions at half spend</div></div>
-          </div>
-        </div>
-
-        <div class="result-card">
-          <div class="result-tag">eCommerce · Security Equipment · US · 14 Months</div>
-          <div class="result-title">$139/month to $14,201 — from 0.17× to 21× ROAS</div>
-          <div class="result-desc">Burning budget at 0.17× ROAS. Full restructure: Shopping and DSA introduced, budget shifted to top-performing segments, CTA testing on landing pages.</div>
-          <div class="result-metrics">
-            <div class="rm"><div class="rm-val g">21×</div><div class="rm-lab">Peak ROAS</div></div>
-            <div class="rm"><div class="rm-val p">+10K%</div><div class="rm-lab">Monthly revenue, 12 months</div></div>
-          </div>
-        </div>
-
+      <div class="results-grid stagger">
+        <div class="result-card"><div class="result-tag">eCommerce · AU/NZ · eBike & Sporting Goods · 90 Days</div><div class="result-title">Peak 70× ROAS — rebuilt PMax and Search from the ground up</div><div class="result-desc">Fragmented campaigns, weak geo targeting, high wasted spend. Rebuilt structure, applied daily discipline, strong BFCM results within 90 days across AU and NZ.</div><div class="result-metrics"><div class="rm"><div class="rm-val g">70×</div><div class="rm-lab">Peak ROAS</div></div><div class="rm"><div class="rm-val p">+50%</div><div class="rm-lab">Growth in 30 days</div></div></div></div>
+        <div class="result-card"><div class="result-tag">Healthcare · Lead Gen · California · 90 Days</div><div class="result-title">CPA cut from $115 to $54 — zero baseline to $4K+/month spend</div><div class="result-desc">No attribution, no conversion clarity, $0 in active spend. Rebuilt account, integrated CallTrackingMetrics, fixed tracking end-to-end, segmented by intent.</div><div class="result-metrics"><div class="rm"><div class="rm-val g">−53%</div><div class="rm-lab">CPA reduction</div></div><div class="rm"><div class="rm-val p">47</div><div class="rm-lab">Qualified leads, month 1</div></div></div></div>
+        <div class="result-card"><div class="result-tag">B2B · Enterprise · Engine Manufacturing · US · 9 Months</div><div class="result-title">$300K → $150K spend. Conversions up 50%.</div><div class="result-desc">Spending $300K/month with a $23 CPA that didn't justify the budget. Deep audit, restructured bids by time/location/audience, A/B tested landing pages.</div><div class="result-metrics"><div class="rm"><div class="rm-val g">−39%</div><div class="rm-lab">CPA: $23 → $14</div></div><div class="rm"><div class="rm-val p">+50%</div><div class="rm-lab">Conversions at half spend</div></div></div></div>
+        <div class="result-card"><div class="result-tag">eCommerce · Security Equipment · US · 14 Months</div><div class="result-title">$139/month to $14,201 — from 0.17× to 21× ROAS</div><div class="result-desc">Burning budget at 0.17× ROAS. Full restructure: Shopping and DSA introduced, budget shifted to top-performing segments, CTA testing on landing pages.</div><div class="result-metrics"><div class="rm"><div class="rm-val g">21×</div><div class="rm-lab">Peak ROAS</div></div><div class="rm"><div class="rm-val p">+10K%</div><div class="rm-lab">Monthly revenue, 12 months</div></div></div></div>
       </div>
     </div>
   </div>
 
-  <!-- Skills / Tech Stack -->
+  <!-- Skills -->
   <div id="skills" class="section">
     <div class="wrap">
-      <div class="section-head">
-        <h2>Tech Stack</h2>
-        <p>Modern tools, proven techniques, and platforms I operate daily.</p>
-      </div>
-
-      <div style="margin-bottom:32px">
+      <div class="section-head reveal"><h2>Tech Stack</h2><p>Modern tools, proven techniques, and platforms I operate daily.</p></div>
+      <div class="reveal-up" style="margin-bottom:32px">
         <p style="font-family:'Fira Code',monospace;font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px">Campaign Management</p>
-        <div class="stack-cols">
+        <div class="stack-cols stagger">
           <div class="stack-cell"><div class="stack-icon">GS</div><span class="stack-name">Google Search</span></div>
           <div class="stack-cell"><div class="stack-icon">PM</div><span class="stack-name">Performance Max</span></div>
           <div class="stack-cell"><div class="stack-icon">SH</div><span class="stack-name">Google Shopping</span></div>
@@ -921,144 +494,43 @@ footer{
           <div class="stack-cell"><div class="stack-icon">CT</div><span class="stack-name">CallTrackingMetrics</span></div>
         </div>
       </div>
-
-      <div style="margin-bottom:32px">
+      <div class="reveal-up" style="margin-bottom:32px;transition-delay:.08s">
         <p style="font-family:'Fira Code',monospace;font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px">Paid Social & Programmatic</p>
-        <div class="stack-cols">
+        <div class="stack-cols stagger">
           <div class="stack-cell"><div class="stack-icon">MA</div><span class="stack-name">Meta Ads</span></div>
           <div class="stack-cell"><div class="stack-icon">D3</div><span class="stack-name">DV360</span></div>
           <div class="stack-cell"><div class="stack-icon">MS</div><span class="stack-name">Microsoft / Bing Ads</span></div>
           <div class="stack-cell"><div class="stack-icon">GH</div><span class="stack-name">Google Hotel Ads</span></div>
         </div>
       </div>
-
-      <div style="margin-bottom:32px">
+      <div class="reveal-up" style="margin-bottom:32px;transition-delay:.14s">
         <p style="font-family:'Fira Code',monospace;font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Travel & Hospitality Platforms</p>
         <p style="font-size:12px;color:var(--text3);margin-bottom:12px;line-height:1.6">Hands-on with travel vertical ad platforms — hotel metasearch, OTA connectivity, and hospitality-specific campaign structures.</p>
         <div class="stack-also">
-          <span class="chip">Booking.com Ads</span>
-          <span class="chip">Expedia TravelAds</span>
-          <span class="chip">Google Hotel Ads</span>
-          <span class="chip">Metasearch Bidding</span>
-          <span class="chip">OTA Campaign Management</span>
-          <span class="chip">Hospitality Lead Gen</span>
+          <span class="chip">Booking.com Ads</span><span class="chip">Expedia TravelAds</span><span class="chip">Google Hotel Ads</span><span class="chip">Metasearch Bidding</span><span class="chip">OTA Campaign Management</span><span class="chip">Hospitality Lead Gen</span>
         </div>
       </div>
-
-      <div style="margin-bottom:20px">
+      <div class="reveal-up" style="transition-delay:.20s">
         <p style="font-family:'Fira Code',monospace;font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Also experienced with</p>
         <p style="font-size:12px;color:var(--text3);margin-bottom:12px;line-height:1.6">Open to specialized and emerging platforms — I pick up new ad systems fast and hold platform-specific certifications where it counts.</p>
         <div class="stack-also">
-          <span class="chip">SKAdNetwork (SKA)</span>
-          <span class="chip">Server-Side Tagging</span>
-          <span class="chip">Enhanced Conversions</span>
-          <span class="chip">Offline Conversion Import</span>
-          <span class="chip">Customer Match</span>
-          <span class="chip">CRM Signal Integration</span>
-          <span class="chip">Microsoft Excel</span>
-          <span class="chip">Negative Keyword Management</span>
-          <span class="chip">A/B Testing</span>
-          <span class="chip">Landing Page Optimization</span>
-          <span class="chip">TikTok Ads</span>
-          <span class="chip">Amazon Ads</span>
+          <span class="chip">SKAdNetwork (SKA)</span><span class="chip">Server-Side Tagging</span><span class="chip">Enhanced Conversions</span><span class="chip">Offline Conversion Import</span><span class="chip">Customer Match</span><span class="chip">CRM Signal Integration</span><span class="chip">Microsoft Excel</span><span class="chip">Negative Keyword Management</span><span class="chip">A/B Testing</span><span class="chip">Landing Page Optimization</span><span class="chip">TikTok Ads</span><span class="chip">Amazon Ads</span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Areas of Expertise -->
+  <!-- Expertise -->
   <div id="expertise" class="section">
     <div class="wrap">
-      <div class="section-head">
-        <h2>Areas of Expertise</h2>
-        <p>Production-grade focus, backed by ten-to-fifteen years in full search, frontend, and data architecture.</p>
-      </div>
-      <div class="expertise-grid">
-
-        <div class="exp-area">
-          <div class="exp-area-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg>
-          </div>
-          <h3>Paid Acquisition Systems</h3>
-          <p>Full-funnel paid search infrastructure built for accuracy and scale — not just campaign management.</p>
-          <ul>
-            <li>Google Search, Shopping, Performance Max</li>
-            <li>Bid strategy and automation architecture</li>
-            <li>Budget pacing and allocation frameworks</li>
-            <li>Competitor conquest and negative keyword systems</li>
-          </ul>
-        </div>
-
-        <div class="exp-area">
-          <div class="exp-area-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          </div>
-          <h3>Tracking & Signal Quality</h3>
-          <p>Most accounts leak 40–60% of budget to broken attribution. I fix the foundation before scaling spend.</p>
-          <ul>
-            <li>GA4, GTM, server-side tagging</li>
-            <li>Enhanced conversions & offline import</li>
-            <li>CallRail and CallTrackingMetrics integration</li>
-            <li>CRM and first-party data pipelines</li>
-          </ul>
-        </div>
-
-        <div class="exp-area">
-          <div class="exp-area-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          </div>
-          <h3>Reporting & Dashboards</h3>
-          <p>Leadership visibility into what's actually driving revenue — not vanity metrics from the platform UI.</p>
-          <ul>
-            <li>Automated Looker Studio dashboards</li>
-            <li>Cross-account visibility frameworks</li>
-            <li>ROAS, CAC, and pipeline attribution reporting</li>
-            <li>Anomaly detection and pacing alerts</li>
-          </ul>
-        </div>
-
-        <div class="exp-area">
-          <div class="exp-area-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <h3>Team Leadership & Ops</h3>
-          <p>Agency-tested operator who's directed junior buyers, set standards, and built systems that survive turnover.</p>
-          <ul>
-            <li>Junior media buyer direction and QA</li>
-            <li>Campaign naming convention standards</li>
-            <li>Onboarding frameworks for new accounts</li>
-            <li>Cross-functional collaboration with creatives and devs</li>
-          </ul>
-        </div>
-
-        <div class="exp-area">
-          <div class="exp-area-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
-          </div>
-          <h3>eCommerce Performance</h3>
-          <p>From Shopify feeds to PMax asset groups — building the infrastructure that turns ad spend into revenue.</p>
-          <ul>
-            <li>Google Shopping feed management</li>
-            <li>Performance Max architecture and audits</li>
-            <li>Product-level ROAS analysis</li>
-            <li>BFCM and seasonal campaign strategy</li>
-          </ul>
-        </div>
-
-        <div class="exp-area">
-          <div class="exp-area-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.96-1.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 14.92z"/></svg>
-          </div>
-          <h3>Healthcare & Lead Gen</h3>
-          <p>Compliant campaigns, real lead quality, CallTracking integration — built for regulated industries that can't afford waste.</p>
-          <ul>
-            <li>Compliance-aware Search and Display campaigns</li>
-            <li>CallRail and CTM setup and segmentation</li>
-            <li>Lead quality scoring frameworks</li>
-            <li>Multi-location hyperlocal targeting</li>
-          </ul>
-        </div>
-
+      <div class="section-head reveal"><h2>Areas of Expertise</h2><p>Production-grade focus, backed by ten-to-fifteen years in full search, frontend, and data architecture.</p></div>
+      <div class="expertise-grid stagger">
+        <div class="exp-area"><div class="exp-area-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg></div><h3>Paid Acquisition Systems</h3><p>Full-funnel paid search infrastructure built for accuracy and scale — not just campaign management.</p><ul><li>Google Search, Shopping, Performance Max</li><li>Bid strategy and automation architecture</li><li>Budget pacing and allocation frameworks</li><li>Competitor conquest and negative keyword systems</li></ul></div>
+        <div class="exp-area"><div class="exp-area-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h3>Tracking & Signal Quality</h3><p>Most accounts leak 40–60% of budget to broken attribution. I fix the foundation before scaling spend.</p><ul><li>GA4, GTM, server-side tagging</li><li>Enhanced conversions & offline import</li><li>CallRail and CallTrackingMetrics integration</li><li>CRM and first-party data pipelines</li></ul></div>
+        <div class="exp-area"><div class="exp-area-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Reporting & Dashboards</h3><p>Leadership visibility into what's actually driving revenue — not vanity metrics from the platform UI.</p><ul><li>Automated Looker Studio dashboards</li><li>Cross-account visibility frameworks</li><li>ROAS, CAC, and pipeline attribution reporting</li><li>Anomaly detection and pacing alerts</li></ul></div>
+        <div class="exp-area"><div class="exp-area-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Team Leadership & Ops</h3><p>Agency-tested operator who's directed junior buyers, set standards, and built systems that survive turnover.</p><ul><li>Junior media buyer direction and QA</li><li>Campaign naming convention standards</li><li>Onboarding frameworks for new accounts</li><li>Cross-functional collaboration with creatives and devs</li></ul></div>
+        <div class="exp-area"><div class="exp-area-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div><h3>eCommerce Performance</h3><p>From Shopify feeds to PMax asset groups — building the infrastructure that turns ad spend into revenue.</p><ul><li>Google Shopping feed management</li><li>Performance Max architecture and audits</li><li>Product-level ROAS analysis</li><li>BFCM and seasonal campaign strategy</li></ul></div>
+        <div class="exp-area"><div class="exp-area-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.96-1.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 14.92z"/></svg></div><h3>Healthcare & Lead Gen</h3><p>Compliant campaigns, real lead quality, CallTracking integration — built for regulated industries that can't afford waste.</p><ul><li>Compliance-aware Search and Display campaigns</li><li>CallRail and CTM setup and segmentation</li><li>Lead quality scoring frameworks</li><li>Multi-location hyperlocal targeting</li></ul></div>
       </div>
     </div>
   </div>
@@ -1066,39 +538,65 @@ footer{
   <!-- FAQ -->
   <div id="faq" class="section">
     <div class="wrap-narrow">
-      <div class="section-head">
-        <h2>Frequently Asked Questions</h2>
-        <p>Questions decision makers usually ask. Answered directly.</p>
-      </div>
-      <div class="faq-list">
+      <div class="section-head reveal"><h2>Frequently Asked Questions</h2><p>Questions decision makers usually ask. Answered directly.</p></div>
+      <div class="faq-list reveal-up">
+
         <div class="faq-item">
-          <div class="faq-q">What kind of role are you looking for?</div>
-          <div class="faq-a">A <strong>Performance Marketing Manager or Growth Marketing Manager</strong> role — in-house, ideally with ownership of the paid search function end to end. US market preferred, fully remote.</div>
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">What kind of role are you looking for?</span>
+            <div class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </button>
+          <div class="faq-body"><p class="faq-a">A <strong>Performance Marketing Manager or Growth Marketing Manager</strong> role — in-house, ideally with ownership of the paid search function end to end. US market preferred, fully remote.</p></div>
         </div>
+
         <div class="faq-item">
-          <div class="faq-q">What platforms and verticals do you specialize in?</div>
-          <div class="faq-a"><strong>Google Ads is the core</strong> — Search, Shopping, Performance Max, and the tracking infrastructure underneath. Verticals: e-commerce, healthcare/medspa, and B2B. Agency-tested across 50+ concurrent accounts.</div>
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">What platforms and verticals do you specialize in?</span>
+            <div class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </button>
+          <div class="faq-body"><p class="faq-a"><strong>Google Ads is the core</strong> — Search, Shopping, Performance Max, and the tracking infrastructure underneath. Verticals: e-commerce, healthcare/medspa, and B2B. Agency-tested across 50+ concurrent accounts.</p></div>
         </div>
+
         <div class="faq-item">
-          <div class="faq-q">Can I see a live account walkthrough?</div>
-          <div class="faq-a"><strong>Yes — by request only.</strong> Live account access is shared exclusively during a recorded screen-share session with me. Book a call and we'll set it up: <a href="https://cal.com/hanslacida" target="_blank" rel="noopener">cal.com/hanslacida</a>.</div>
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">Can I see a live account walkthrough?</span>
+            <div class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </button>
+          <div class="faq-body"><p class="faq-a"><strong>Yes — by request only.</strong> Live account access is shared exclusively during a recorded screen-share session with me. Book a call and we'll set it up: <a href="https://cal.com/hanslacida" target="_blank" rel="noopener">cal.com/hanslacida</a>.</p></div>
         </div>
+
         <div class="faq-item">
-          <div class="faq-q">Have you led or mentored junior marketers?</div>
-          <div class="faq-a"><strong>Yes.</strong> Directed junior media buyers on multi-account engagements, built QA frameworks, established naming conventions, and reviewed campaign work before client delivery. Comfortable leading a team and setting standards.</div>
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">Have you led or mentored junior marketers?</span>
+            <div class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </button>
+          <div class="faq-body"><p class="faq-a"><strong>Yes.</strong> Directed junior media buyers on multi-account engagements, built QA frameworks, established naming conventions, and reviewed campaign work before client delivery. Comfortable leading a team and setting standards.</p></div>
         </div>
+
         <div class="faq-item">
-          <div class="faq-q">Do you only work on Google Ads, or can you handle other platforms?</div>
-          <div class="faq-a">Google Ads is the core, but I'm hands-on with a wider stack. <strong>Paid social:</strong> Meta Ads, TikTok. <strong>Programmatic:</strong> DV360. <strong>Travel and hospitality:</strong> Booking.com Ads, Expedia TravelAds, Google Hotel Ads, OTA metasearch bidding. <strong>Mobile:</strong> SKAdNetwork (SKA) measurement and attribution. I'm also open to specialized platforms — I pick up new ad systems quickly and adapt the same systems-thinking that works across any channel.</div>
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">Do you only work on Google Ads, or can you handle other platforms?</span>
+            <div class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </button>
+          <div class="faq-body"><p class="faq-a">Google Ads is the core, but I'm hands-on with a wider stack. <strong>Paid social:</strong> Meta Ads, TikTok. <strong>Programmatic:</strong> DV360. <strong>Travel and hospitality:</strong> Booking.com Ads, Expedia TravelAds, Google Hotel Ads, OTA metasearch bidding. <strong>Mobile:</strong> SKAdNetwork (SKA) measurement and attribution. I'm also open to specialized platforms — I pick up new ad systems quickly and adapt the same systems-thinking that works across any channel.</p></div>
         </div>
+
         <div class="faq-item">
-          <div class="faq-q">Are you AI-ready? Do you use AI in your workflow?</div>
-          <div class="faq-a"><strong>Yes — daily.</strong> I use Claude and ChatGPT as active parts of my workflow: research, copy angle development, campaign audit analysis, and anomaly investigation. AI handles speed; I handle judgment. Every output gets reviewed before it touches a live account or a client deliverable.</div>
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">Are you AI-ready? Do you use AI in your workflow?</span>
+            <div class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </button>
+          <div class="faq-body"><p class="faq-a"><strong>Yes — daily.</strong> I use Claude and ChatGPT as active parts of my workflow: research, copy angle development, campaign audit analysis, and anomaly investigation. AI handles speed; I handle judgment. Every output gets reviewed before it touches a live account or a client deliverable.</p></div>
         </div>
+
         <div class="faq-item">
-          <div class="faq-q">What's the best way to reach you?</div>
-          <div class="faq-a">Book a call directly at <a href="https://cal.com/hanslacida" target="_blank" rel="noopener">cal.com/hanslacida</a>, WhatsApp at <a href="https://wa.me/639761053409" target="_blank" rel="noopener">+63 976 105 3409</a>, or email <a href="mailto:hanzel@hanslacida.com">hanzel@hanslacida.com</a>.</div>
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">What's the best way to reach you?</span>
+            <div class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </button>
+          <div class="faq-body"><p class="faq-a">Book a call directly at <a href="https://cal.com/hanslacida" target="_blank" rel="noopener">cal.com/hanslacida</a>, WhatsApp at <a href="https://wa.me/639761053409" target="_blank" rel="noopener">+63 976 105 3409</a>, or email <a href="mailto:hanzel@hanslacida.com">hanzel@hanslacida.com</a>.</p></div>
         </div>
+
       </div>
     </div>
   </div>
@@ -1106,27 +604,17 @@ footer{
   <!-- Contact -->
   <div id="contact" class="contact-section">
     <div class="wrap">
-      <div class="section-head">
-        <h2>Get in Touch</h2>
-        <p>Hiring a senior marketing hire, or want to schedule a walkthrough? I'd love to hear from you.</p>
-      </div>
-
-      <div class="contact-form-wrap">
+      <div class="section-head reveal"><h2>Get in Touch</h2><p>Hiring a senior marketing hire, or want to schedule a walkthrough? I'd love to hear from you.</p></div>
+      <div class="contact-form-wrap reveal-scale">
         <div class="form-row">
-          <div class="form-group">
-            <label>Name</label>
-            <input type="text" placeholder="Your name">
-          </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" placeholder="your@email.com">
-          </div>
+          <div class="form-group"><label>Name</label><input type="text" placeholder="Your name"></div>
+          <div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com"></div>
         </div>
         <div class="form-full" style="margin-bottom:14px">
           <div class="form-group">
             <label>Topic</label>
-            <select style="background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:10px 14px;font-family:'Inter',sans-serif;font-size:13px;color:var(--text);outline:none;appearance:none;-webkit-appearance:none;background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2355556a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right 14px center;cursor:pointer;transition:border-color .15s;width:100%">
-              <option value="" disabled selected style="color:var(--text3)">Select a topic</option>
+            <select>
+              <option value="" disabled selected>Select a topic</option>
               <option value="fulltime">Full-time opportunity</option>
               <option value="hiring">Hiring / interview inquiry</option>
               <option value="others">Others</option>
@@ -1134,68 +622,37 @@ footer{
           </div>
         </div>
         <div class="form-full">
-          <div class="form-group">
-            <label>Message</label>
-            <textarea rows="5" placeholder="Tell me about the role or what you're looking for..."></textarea>
-          </div>
+          <div class="form-group"><label>Message</label><textarea rows="5" placeholder="Tell me about the role or what you're looking for..."></textarea></div>
         </div>
         <button class="btn-send" onclick="window.location.href='mailto:hanzel@hanslacida.com'">Send Message</button>
-        <p style="text-align:center;margin-top:16px;font-size:13px;color:var(--text3)">
-          Prefer to talk? <a href="https://cal.com/hanslacida" target="_blank" rel="noopener" style="color:var(--purple)">Schedule a short intro call →</a>
-        </p>
+        <p class="prefer-talk">Prefer to talk? <a href="https://cal.com/hanslacida" target="_blank" rel="noopener">Schedule a short intro call →</a></p>
       </div>
-
-      <div class="direct-reach">
+      <div class="direct-reach stagger">
         <a href="https://cal.com/hanslacida" target="_blank" rel="noopener" class="reach-card">
-          <div class="reach-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01"/></svg>
-          </div>
-          <div class="reach-label">Book a call</div>
-          <div class="reach-value">cal.com/hanslacida</div>
+          <div class="reach-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01"/></svg></div>
+          <div class="reach-label">Book a call</div><div class="reach-value">cal.com/hanslacida</div>
         </a>
         <a href="https://wa.me/639761053409" target="_blank" rel="noopener" class="reach-card">
-          <div class="reach-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-          </div>
-          <div class="reach-label">WhatsApp</div>
-          <div class="reach-value">+63 976 105 3409</div>
+          <div class="reach-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+          <div class="reach-label">WhatsApp</div><div class="reach-value">+63 976 105 3409</div>
         </a>
         <a href="mailto:hanzel@hanslacida.com" class="reach-card">
-          <div class="reach-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          </div>
-          <div class="reach-label">Email</div>
-          <div class="reach-value">hanzel@hanslacida.com</div>
+          <div class="reach-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+          <div class="reach-label">Email</div><div class="reach-value">hanzel@hanslacida.com</div>
         </a>
       </div>
-
     </div>
   </div>
 
-</div><!-- /page -->
+</div>
 
-<!-- Mobile bottom nav -->
+<!-- Mobile nav -->
 <nav class="mobile-nav" id="mobile-nav">
-  <a href="#highlights" data-section="highlights">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-    Results
-  </a>
-  <a href="#experience" data-section="experience">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-    Experience
-  </a>
-  <a href="#skills" data-section="skills">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-    Stack
-  </a>
-  <a href="#expertise" data-section="expertise">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-    Expertise
-  </a>
-  <a href="#contact" data-section="contact">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-    Contact
-  </a>
+  <a href="#highlights" data-section="highlights"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Results</a>
+  <a href="#experience" data-section="experience"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Experience</a>
+  <a href="#skills" data-section="skills"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Stack</a>
+  <a href="#expertise" data-section="expertise"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Expertise</a>
+  <a href="#contact" data-section="contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Contact</a>
 </nav>
 
 <!-- Footer -->
@@ -1205,35 +662,9 @@ footer{
       <div class="footer-brand-name">Hans Lacida</div>
       <div class="footer-brand-desc">Paid Acquisition Systems Operator · Google Ads execution infrastructure built for revenue, not vanity metrics.</div>
     </div>
-    <div class="footer-col">
-      <h4>Navigation</h4>
-      <ul>
-        <li><a href="#highlights">Results</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#skills">Tech Stack</a></li>
-        <li><a href="#expertise">Expertise</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Specialties</h4>
-      <ul>
-        <li><a href="#expertise">Google Search Ads</a></li>
-        <li><a href="#expertise">Performance Max</a></li>
-        <li><a href="#expertise">Conversion Tracking</a></li>
-        <li><a href="#expertise">Healthcare Lead Gen</a></li>
-        <li><a href="#expertise">eCommerce</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="https://cal.com/hanslacida" target="_blank" rel="noopener">cal.com/hanslacida</a></li>
-        <li><a href="https://wa.me/639761053409" target="_blank" rel="noopener">+63 976 105 3409</a></li>
-        <li><a href="mailto:hanzel@hanslacida.com">hanzel@hanslacida.com</a></li>
-        <li><a href="https://hanslacida.com" target="_blank" rel="noopener">hanslacida.com</a></li>
-      </ul>
-    </div>
+    <div class="footer-col"><h4>Navigation</h4><ul><li><a href="#highlights">Results</a></li><li><a href="#experience">Experience</a></li><li><a href="#skills">Tech Stack</a></li><li><a href="#expertise">Expertise</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+    <div class="footer-col"><h4>Specialties</h4><ul><li><a href="#expertise">Google Search Ads</a></li><li><a href="#expertise">Performance Max</a></li><li><a href="#expertise">Conversion Tracking</a></li><li><a href="#expertise">Healthcare Lead Gen</a></li><li><a href="#expertise">eCommerce</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="https://cal.com/hanslacida" target="_blank" rel="noopener">cal.com/hanslacida</a></li><li><a href="https://wa.me/639761053409" target="_blank" rel="noopener">+63 976 105 3409</a></li><li><a href="mailto:hanzel@hanslacida.com">hanzel@hanslacida.com</a></li><li><a href="https://hanslacida.com" target="_blank" rel="noopener">hanslacida.com</a></li></ul></div>
   </div>
   <div class="footer-bottom">
     <p>© 2026 Hans Lacida · Wyoming United States of America Headquarters</p>
@@ -1241,5 +672,96 @@ footer{
   </div>
 </footer>
 
+<script>
+// ── SCROLL REVEAL ──
+(function(){
+  const sel='.reveal,.reveal-up,.reveal-scale,.stagger';
+  const els=document.querySelectorAll(sel);
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}});
+  },{threshold:.1,rootMargin:'0px 0px -36px 0px'});
+  // hero: fire on load
+  document.querySelectorAll('.hero .reveal,.hero .reveal-scale,.hero .reveal-up,.hero .stagger').forEach(el=>{
+    requestAnimationFrame(()=>setTimeout(()=>el.classList.add('visible'),40));
+  });
+  els.forEach(el=>{if(!el.closest('.hero'))io.observe(el)});
+})();
+
+// ── FAQ ACCORDION ──
+(function(){
+  document.querySelectorAll('.faq-trigger').forEach(trigger=>{
+    trigger.addEventListener('click',()=>{
+      const item=trigger.closest('.faq-item');
+      const body=item.querySelector('.faq-body');
+      const isOpen=item.classList.contains('open');
+      // close all
+      document.querySelectorAll('.faq-item.open').forEach(o=>{
+        o.classList.remove('open');
+        o.querySelector('.faq-body').style.maxHeight='0';
+        o.querySelector('.faq-trigger').setAttribute('aria-expanded','false');
+      });
+      // open clicked
+      if(!isOpen){
+        item.classList.add('open');
+        body.style.maxHeight=body.scrollHeight+'px';
+        trigger.setAttribute('aria-expanded','true');
+      }
+    });
+  });
+})();
+
+// ── FLOATING NAV + ACTIVE TRACKING ──
+(function(){
+  const panel=document.getElementById('section-indicator');
+  const siItems=panel.querySelectorAll('.si-item');
+  const mobileLinks=document.querySelectorAll('#mobile-nav a');
+  const navLinks=document.querySelectorAll('.nav-links a');
+  const sections=['highlights','experience','results','skills','expertise','faq','contact'];
+
+  function getActive(){
+    const mid=window.innerHeight*.45;
+    let active=null;
+    sections.forEach(id=>{
+      const el=document.getElementById(id);
+      if(el&&el.getBoundingClientRect().top<=mid)active=id;
+    });
+    return active;
+  }
+
+  function update(){
+    const scrollY=window.scrollY;
+    const heroH=document.querySelector('.hero')?.offsetHeight||400;
+    const past=scrollY>heroH*.5;
+    panel.style.opacity=past?'1':'0';
+    panel.style.pointerEvents=past?'auto':'none';
+    panel.style.transform=past?'translateY(-50%) scale(1)':'translateY(-50%) scale(0.96)';
+    const active=getActive();
+    siItems.forEach(i=>i.classList.toggle('active',i.dataset.section===active));
+    mobileLinks.forEach(l=>l.classList.toggle('active',l.dataset.section===active));
+    navLinks.forEach(l=>{
+      const href=l.getAttribute('href').replace('#','');
+      l.classList.toggle('active',href===active);
+    });
+  }
+
+  siItems.forEach(item=>{
+    item.addEventListener('click',()=>{
+      const el=document.getElementById(item.dataset.section);
+      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
+  mobileLinks.forEach(link=>{
+    link.addEventListener('click',e=>{
+      e.preventDefault();
+      const el=document.getElementById(link.getAttribute('href').replace('#',''));
+      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
+
+  window.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update,{passive:true});
+  update();
+})();
+</script>
 </body>
 </html>
