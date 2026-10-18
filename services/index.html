@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Expertise & Services — Hans Lacida | Paid Acquisition Systems Operator</title>
+<meta name="description" content="Hans Lacida builds the full paid acquisition system — campaign architecture, conversion tracking, first-party data, reporting, and scaling. One-time services and ongoing engagements.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0d12;--bg2:#13131c;--bg3:#1a1a27;
+  --border:#23233a;--border2:#2e2e4a;
+  --purple:#7c6dfa;--purple-dim:rgba(124,109,250,0.12);--purple-glow:rgba(124,109,250,0.25);
+  --green:#22d3a3;--green-dim:rgba(34,211,163,0.1);
+  --blue:#38bdf8;--blue-dim:rgba(56,189,248,0.1);--blue-glow:rgba(56,189,248,0.22);
+  --amber:#f7c44f;--amber-dim:rgba(247,196,79,0.1);
+  --red:#f7614f;--red-dim:rgba(247,97,79,0.1);
+  --text:#eeeef5;--text2:#8888aa;--text3:#55556a;
+  color-scheme:dark;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+/* ORBS */
+.orb{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;opacity:0.5}
+.orb-1{width:600px;height:600px;background:radial-gradient(circle,rgba(124,109,250,0.4),transparent 70%);top:-150px;left:-150px;animation:orbDrift1 14s ease-in-out infinite}
+.orb-2{width:400px;height:400px;background:radial-gradient(circle,rgba(34,211,163,0.2),transparent 70%);bottom:10%;right:-100px;animation:orbDrift2 18s ease-in-out infinite}
+@keyframes orbDrift1{0%,100%{transform:translate(0,0)}50%{transform:translate(24px,16px)}}
+@keyframes orbDrift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-18px,24px)}}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-up{opacity:0;transform:translateY(40px);transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1)}
+.reveal-up.visible{opacity:1;transform:translateY(0)}
+.reveal-scale{opacity:0;transform:scale(.97);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+.stagger>*{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.stagger.visible>*{opacity:1;transform:translateY(0)}
+.stagger.visible>*:nth-child(1){transition-delay:.04s}
+.stagger.visible>*:nth-child(2){transition-delay:.10s}
+.stagger.visible>*:nth-child(3){transition-delay:.16s}
+.stagger.visible>*:nth-child(4){transition-delay:.22s}
+.stagger.visible>*:nth-child(5){transition-delay:.28s}
+.stagger.visible>*:nth-child(6){transition-delay:.34s}
+
+/* NAV */
+nav.top-nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:env(safe-area-inset-top,0px) 0 0;
+  background:rgba(13,13,18,0.8);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{max-width:1100px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav-logo{font-size:14px;font-weight:600;color:var(--text);letter-spacing:-0.01em}
+.nav-logo span{color:var(--text3);font-weight:400;margin-left:6px;font-size:12px;font-family:'Fira Code',monospace}
+.nav-links{display:flex;gap:24px;list-style:none;align-items:center}
+.nav-links a{font-size:13px;color:var(--text2);transition:color .15s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{color:var(--text)}
+.nav-back{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text3);transition:color .15s}
+.nav-back:hover{color:var(--text2)}
+.nav-btn{font-size:13px;font-weight:500;background:var(--purple);color:#fff;padding:7px 18px;border-radius:8px;transition:opacity .15s,transform .15s}
+.nav-btn:hover{opacity:.85;transform:translateY(-1px)}
+
+/* LAYOUT */
+.page{position:relative;z-index:1}
+.wrap{max-width:1100px;margin:0 auto;padding:0 32px}
+.wrap-narrow{max-width:820px;margin:0 auto;padding:0 32px}
+
+/* HERO */
+.hero{padding:120px 0 72px;text-align:center;border-bottom:1px solid var(--border)}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--purple-dim);border:1px solid var(--purple-glow);
+  padding:6px 14px;border-radius:20px;
+  font-family:'Fira Code',monospace;font-size:11px;color:var(--purple);
+  margin-bottom:24px;letter-spacing:.04em;
+}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.8)}}
+.hero h1{font-size:clamp(28px,4.5vw,48px);font-weight:700;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--purple),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:16px;color:var(--text2);max-width:580px;margin:0 auto 28px;line-height:1.75}
+.hero-sub strong{color:var(--text);font-weight:500}
+.hero-promise{
+  display:inline-block;
+  background:var(--bg2);border:1px solid var(--border2);border-radius:12px;
+  padding:18px 28px;font-size:14px;color:var(--text2);
+  max-width:660px;line-height:1.75;margin-bottom:36px;
+  font-style:italic;text-align:left;
+}
+.hero-promise strong{color:var(--text);font-style:normal}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:36px}
+.hero-tag{font-family:'Fira Code',monospace;font-size:11px;color:var(--text3);background:var(--bg2);border:1px solid var(--border);padding:5px 12px;border-radius:20px}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-solid{display:inline-flex;align-items:center;gap:8px;background:var(--purple);color:#fff;font-size:14px;font-weight:500;padding:11px 24px;border-radius:8px;transition:opacity .15s,transform .15s,box-shadow .15s}
+.btn-solid:hover{opacity:.9;transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,109,250,0.4)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border2);color:var(--text2);font-size:14px;padding:11px 24px;border-radius:8px;transition:border-color .15s,color .15s,transform .15s}
+.btn-outline:hover{border-color:var(--purple);color:var(--text);transform:translateY(-2px)}
+
+/* TRUST BAR */
+.trust-bar{border-bottom:1px solid var(--border);padding:0}
+.trust-inner{max-width:1100px;margin:0 auto;padding:0 32px;display:flex;gap:32px;justify-content:center;flex-wrap:wrap;padding-top:20px;padding-bottom:20px}
+.trust-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text3);font-family:'Fira Code',monospace}
+.trust-item svg{color:var(--green);flex-shrink:0}
+
+/* SECTION */
+.section{padding:72px 0;border-top:1px solid var(--border)}
+.section-head{text-align:center;margin-bottom:48px}
+.section-head h2{font-size:clamp(20px,3vw,28px);font-weight:700;letter-spacing:-0.02em;margin-bottom:10px}
+.section-head p{font-size:15px;color:var(--text2);max-width:520px;margin:0 auto}
+.section-label{font-family:'Fira Code',monospace;font-size:11px;color:var(--purple);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;display:block;text-align:center}
+
+/* PILLAR GRID */
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pillar{
+  background:var(--bg2);border:1px solid var(--border);border-radius:14px;
+  padding:28px;display:flex;flex-direction:column;gap:14px;
+  transition:border-color .2s,transform .2s,box-shadow .2s;
+}
+.pillar:hover{border-color:var(--purple);transform:translateY(-3px);box-shadow:0 12px 40px rgba(124,109,250,0.1)}
+.pillar-icon{width:40px;height:40px;border-radius:10px;background:var(--purple-dim);border:1px solid var(--purple-glow);display:flex;align-items:center;justify-content:center;color:var(--purple)}
+.pillar-num{font-family:'Fira Code',monospace;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em}
+.pillar h3{font-size:15px;font-weight:600;letter-spacing:-0.01em}
+.pillar-desc{font-size:13px;color:var(--text2);line-height:1.65;flex:1}
+.pillar-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.pillar-tag{font-family:'Fira Code',monospace;font-size:10px;color:var(--purple);background:var(--purple-dim);border:1px solid rgba(124,109,250,0.2);padding:3px 8px;border-radius:4px}
+
+/* SERVICES */
+.services-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:24px}
+.services-note{font-size:13px;color:var(--text3);font-family:'Fira Code',monospace}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:14px}
+.service-card{
+  background:var(--bg2);border:1px solid var(--border);border-radius:14px;
+  padding:28px;display:flex;flex-direction:column;gap:16px;
+  position:relative;overflow:hidden;
+  transition:border-color .2s,transform .2s,box-shadow .2s;
+}
+.service-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 12px 36px rgba(0,0,0,0.3)}
+.service-card.featured{border-color:var(--purple)}
+.service-card.featured:hover{box-shadow:0 12px 36px rgba(124,109,250,0.15)}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:transparent;transition:background .2s}
+.service-card.featured::before{background:linear-gradient(90deg,var(--purple),var(--green))}
+.badge{
+  position:absolute;top:18px;right:18px;
+  font-family:'Fira Code',monospace;font-size:10px;font-weight:500;
+  padding:4px 10px;border-radius:4px;
+}
+.badge-urgent{background:var(--red-dim);color:var(--red);border:1px solid rgba(247,97,79,0.3)}
+.badge-popular{background:var(--purple-dim);color:var(--purple);border:1px solid var(--purple-glow)}
+.badge-win{background:var(--green-dim);color:var(--green);border:1px solid rgba(34,211,163,0.3)}
+.badge-value{background:var(--amber-dim);color:var(--amber);border:1px solid rgba(247,196,79,0.3)}
+.service-tag{font-family:'Fira Code',monospace;font-size:11px;color:var(--text3)}
+.service-title{font-size:17px;font-weight:700;letter-spacing:-0.02em;line-height:1.3;padding-right:80px}
+.service-price{display:flex;align-items:baseline;gap:8px}
+.price-val{
+  font-size:28px;font-weight:700;letter-spacing:-0.04em;
+  background:linear-gradient(135deg,var(--purple),var(--green));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.price-note{font-size:12px;color:var(--text3);font-family:'Fira Code',monospace}
+.service-desc{font-size:13px;color:var(--text2);line-height:1.65}
+.service-includes{list-style:none;display:flex;flex-direction:column;gap:8px}
+.service-includes li{font-size:13px;color:var(--text2);display:flex;align-items:flex-start;gap:10px;line-height:1.5}
+.service-includes li::before{
+  content:'';display:block;width:16px;height:16px;border-radius:50%;flex-shrink:0;margin-top:1px;
+  background:var(--green-dim);border:1px solid rgba(34,211,163,0.3);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 24 24' fill='none' stroke='%2322d3a3' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:center;background-size:8px;
+}
+.service-cta{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--purple);color:#fff;font-size:14px;font-weight:500;
+  padding:12px;border-radius:8px;transition:opacity .15s,transform .15s,box-shadow .15s;margin-top:auto;
+}
+.service-cta:hover{opacity:.88;transform:translateY(-1px);box-shadow:0 6px 20px rgba(124,109,250,0.4)}
+.service-cta.outline{background:transparent;border:1px solid var(--border2);color:var(--text2)}
+.service-cta.outline:hover{border-color:var(--purple);color:var(--text);box-shadow:none}
+
+/* ANNUAL CARD */
+.annual-card{
+  background:var(--bg2);border:1px solid var(--purple);border-radius:14px;padding:36px;
+  display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;
+  position:relative;overflow:hidden;
+}
+.annual-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple),var(--green))}
+.annual-label{font-family:'Fira Code',monospace;font-size:11px;color:var(--purple);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.annual-title{font-size:20px;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px}
+.annual-desc{font-size:14px;color:var(--text2);line-height:1.7;max-width:500px}
+.annual-price{text-align:right;flex-shrink:0}
+.annual-price .price-val{font-size:32px}
+.annual-price .price-note{display:block;margin-top:4px;text-align:right}
+.annual-cta{margin-top:18px;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--purple);color:#fff;font-size:13px;font-weight:500;padding:10px 20px;border-radius:8px;transition:opacity .15s,transform .15s;white-space:nowrap}
+.annual-cta:hover{opacity:.85;transform:translateY(-1px)}
+
+/* NICHES */
+.niches-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.niche-card{
+  background:var(--bg2);border:1px solid var(--border);border-radius:12px;
+  padding:20px 16px;transition:border-color .2s,transform .2s;
+}
+.niche-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.niche-num{font-family:'Fira Code',monospace;font-size:11px;color:var(--text3);margin-bottom:10px}
+.niche-title{font-size:13px;font-weight:600;margin-bottom:8px;letter-spacing:-0.01em}
+.niche-desc{font-size:12px;color:var(--text2);line-height:1.55;margin-bottom:12px}
+.niche-proof{display:flex;flex-direction:column;gap:4px;padding-top:10px;border-top:1px solid var(--border)}
+.niche-stat{font-family:'Fira Code',monospace;font-size:11px;color:var(--green)}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.faq-item{border-bottom:1px solid var(--border);overflow:hidden}
+.faq-item:last-child{border-bottom:none}
+.faq-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;cursor:pointer;background:none;border:none;text-align:left;transition:background .15s}
+.faq-trigger:hover{background:var(--bg3)}
+.faq-item.open .faq-trigger{background:var(--bg3)}
+.faq-q{font-size:14px;font-weight:500;color:var(--text);line-height:1.4}
+.faq-chevron{width:22px;height:22px;border-radius:6px;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;color:var(--text3);flex-shrink:0;transition:background .2s,border-color .2s,color .2s,transform .35s cubic-bezier(.22,1,.36,1)}
+.faq-item.open .faq-chevron{background:var(--purple-dim);border-color:var(--purple);color:var(--purple);transform:rotate(180deg)}
+.faq-body{max-height:0;overflow:hidden;transition:max-height .42s cubic-bezier(.22,1,.36,1),opacity .3s ease;opacity:0}
+.faq-item.open .faq-body{opacity:1}
+.faq-a{font-size:13px;color:var(--text2);line-height:1.75;padding:0 24px 20px}
+.faq-a strong{color:var(--text);font-weight:500}
+.faq-a a{color:var(--purple);transition:opacity .15s}
+.faq-a a:hover{opacity:.8;text-decoration:underline}
+
+/* DISCOVERY CTA */
+.discovery{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:48px;text-align:center}
+.discovery h3{font-size:22px;font-weight:700;letter-spacing:-0.02em;margin-bottom:12px}
+.discovery p{font-size:15px;color:var(--text2);max-width:440px;margin:0 auto 28px;line-height:1.7}
+.discovery-meta{font-size:12px;color:var(--text3);margin-top:14px;font-family:'Fira Code',monospace}
+
+/* REACH CARDS */
+.reach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:640px;margin:0 auto}
+.reach-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px 16px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s,transform .2s,box-shadow .2s}
+.reach-card:hover{border-color:var(--purple);transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,109,250,0.1)}
+.reach-icon{color:var(--purple)}
+.reach-label{font-family:'Fira Code',monospace;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em}
+.reach-value{font-size:13px;font-weight:500;color:var(--text)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:40px 0 env(safe-area-inset-bottom,24px)}
+.footer-inner{max-width:1100px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1fr auto auto auto;gap:40px;align-items:start}
+.footer-brand-name{font-size:14px;font-weight:600;margin-bottom:6px}
+.footer-brand-desc{font-size:12px;color:var(--text3);line-height:1.5;max-width:220px}
+.footer-col h4{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;font-family:'Fira Code',monospace}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-col ul a{font-size:13px;color:var(--text2);transition:color .15s}
+.footer-col ul a:hover{color:var(--text)}
+.footer-bottom{max-width:1100px;margin:24px auto 0;padding:20px 32px 0;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.footer-bottom p{font-size:12px;color:var(--text3)}
+.footer-bottom a{font-size:12px;color:var(--text3);transition:color .15s}
+.footer-bottom a:hover{color:var(--text2)}
+
+/* MOBILE NAV */
+@media(max-width:640px){
+  .mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:200;background:rgba(13,13,18,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--border);padding:8px 0 env(safe-area-inset-bottom,8px);justify-content:space-around}
+  .mobile-nav a{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--text3);font-size:10px;font-family:'Fira Code',monospace;padding:4px 8px;transition:color .15s}
+  .mobile-nav a.active,.mobile-nav a:hover{color:var(--purple)}
+  .mobile-nav svg{width:18px;height:18px}
+  body{padding-bottom:calc(56px + env(safe-area-inset-bottom,0px))}
+}
+@media(min-width:641px){.mobile-nav{display:none}}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .pillars-grid{grid-template-columns:repeat(2,1fr)}
+  .niches-grid{grid-template-columns:repeat(3,1fr)}
+  .annual-card{grid-template-columns:1fr;gap:20px}
+  .annual-price{text-align:left}
+  .annual-price .price-note{text-align:left}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:24px}
+}
+@media(max-width:640px){
+  .wrap,.wrap-narrow{padding:0 16px}
+  .nav-links{display:none}
+  .nav-btn{font-size:12px;padding:6px 14px}
+  .nav-inner{padding:12px 16px}
+  .hero{padding:88px 0 48px}
+  .hero h1{font-size:26px}
+  .hero-promise{padding:14px 18px;font-size:13px}
+  .pillars-grid{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+  .niches-grid{grid-template-columns:repeat(2,1fr)}
+  .reach-grid{grid-template-columns:1fr;max-width:100%}
+  .reach-card{flex-direction:row;align-items:center;gap:14px;padding:16px}
+  .discovery{padding:28px 20px}
+  .footer-inner{grid-template-columns:1fr;gap:20px}
+  .footer-col{display:none}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:8px;padding:16px 16px 0}
+  .section{padding:56px 0}
+  .section-head{margin-bottom:32px}
+  .faq-trigger{padding:16px 18px}
+  .faq-q{font-size:13px}
+  .faq-a{font-size:12px;padding:0 18px 16px}
+  .trust-inner{gap:16px}
+  .services-header{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:480px){
+  .niches-grid{grid-template-columns:1fr}
+  .hero-btns{flex-direction:column;align-items:center}
+  .btn-solid,.btn-outline{width:100%;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<!-- NAV -->
+<nav class="top-nav">
+  <div class="nav-inner">
+    <span class="nav-logo">Hans Lacida <span>/ Expertise</span></span>
+    <ul class="nav-links">
+      <li><a href="#pillars">Pillars</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#verticals">Verticals</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="/" class="nav-back">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to CV
+      </a></li>
+    </ul>
+    <a href="https://book.zeldigital.com/" target="_blank" rel="noopener" class="nav-btn">Book a Call</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-badge reveal-scale" style="transition-delay:.05s"><div class="hero-badge-dot"></div>Available for new engagements</div>
+      <h1 class="reveal" style="transition-delay:.14s">I build the system that makes<br><em>Google Ads actually work.</em></h1>
+      <p class="hero-sub reveal" style="transition-delay:.22s">
+        Not just campaign management. The full infrastructure —
+        <strong>campaign architecture, conversion tracking, first-party data, reporting, and scaling</strong>
+        — built for measurable, profitable growth.
+      </p>
+      <div class="hero-promise reveal" style="transition-delay:.30s">
+        "Hans Lacida (PPChans) is a Paid Acquisition Systems Operator specializing in Google Ads for eCommerce and service businesses. I build the full system behind profitable paid media: <strong>campaign architecture, conversion tracking, first-party data, reporting, and scaling.</strong>"
+      </div>
+      <div class="hero-tags reveal" style="transition-delay:.36s">
+        <span class="hero-tag">eCommerce & DTC</span>
+        <span class="hero-tag">Healthcare / MedSpa</span>
+        <span class="hero-tag">B2B & Enterprise</span>
+        <span class="hero-tag">Legal / Finance</span>
+        <span class="hero-tag">Home Services</span>
+        <span class="hero-tag">10+ Years Experience</span>
+        <span class="hero-tag">$10M+ Ad Spend Managed</span>
+      </div>
+      <div class="hero-btns reveal" style="transition-delay:.42s">
+        <a href="#services" class="btn-solid">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          See Services & Pricing
+        </a>
+        <a href="https://book.zeldigital.com/" target="_blank" rel="noopener" class="btn-outline">
+          Book 10-Min Discovery Call
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-inner reveal">
+      <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Secure payments via Stripe</div>
+      <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Fast turnaround</div>
+      <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Google Partner certified</div>
+      <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>10+ years experience</div>
+      <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>One-time pricing · No contracts</div>
+    </div>
+  </div>
+
+  <!-- PILLARS -->
+  <div id="pillars" class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-label">Six Core Pillars</span>
+        <h2>The full system behind profitable paid media.</h2>
+        <p>Not just campaigns. The architecture, tracking, data, and reporting that make campaigns work.</p>
+      </div>
+      <div class="pillars-grid stagger">
+
+        <div class="pillar">
+          <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg></div>
+          <div class="pillar-num">01 — Architecture</div>
+          <h3>Google Ads Architecture</h3>
+          <p class="pillar-desc">Search, Shopping, Performance Max, Display — built with campaign structure, negative keyword systems, and scaling logic that prevent wasted spend from compounding.</p>
+          <div class="pillar-tags"><span class="pillar-tag">Search</span><span class="pillar-tag">Shopping</span><span class="pillar-tag">PMax</span><span class="pillar-tag">Negative KWs</span><span class="pillar-tag">Scaling</span></div>
+        </div>
+
+        <div class="pillar">
+          <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div class="pillar-num">02 — Tracking</div>
+          <h3>Conversion Tracking</h3>
+          <p class="pillar-desc">Most accounts teach Google's AI the wrong signals. GA4, GTM, server-side tagging, enhanced conversions, and offline conversion import — built right from the ground up.</p>
+          <div class="pillar-tags"><span class="pillar-tag">GA4</span><span class="pillar-tag">GTM</span><span class="pillar-tag">Server-Side</span><span class="pillar-tag">Enhanced Conv.</span><span class="pillar-tag">Offline Import</span></div>
+        </div>
+
+        <div class="pillar">
+          <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg></div>
+          <div class="pillar-num">03 — Data</div>
+          <h3>First-Party Data</h3>
+          <p class="pillar-desc">Customer Match, consent mode, CRM-to-Ads integration, and audience layering — so campaigns run on your data, not third-party cookies.</p>
+          <div class="pillar-tags"><span class="pillar-tag">Customer Match</span><span class="pillar-tag">Consent Mode</span><span class="pillar-tag">CRM Integration</span><span class="pillar-tag">Audiences</span></div>
+        </div>
+
+        <div class="pillar">
+          <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+          <div class="pillar-num">04 — eCommerce</div>
+          <h3>eCommerce Growth</h3>
+          <p class="pillar-desc">Shopify and WooCommerce tracking, Shopping feed management, PMax asset group architecture, and seasonal scaling strategy — built to connect ad spend directly to revenue.</p>
+          <div class="pillar-tags"><span class="pillar-tag">Shopify</span><span class="pillar-tag">Shopping Feeds</span><span class="pillar-tag">PMax Assets</span><span class="pillar-tag">BFCM</span></div>
+        </div>
+
+        <div class="pillar">
+          <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <div class="pillar-num">05 — Reporting</div>
+          <h3>Reporting & Attribution</h3>
+          <p class="pillar-desc">Looker Studio dashboards that give founders and CMOs real visibility — ROAS, CAC, pipeline attribution, and pacing alerts. No vanity metrics, no bloated PDFs.</p>
+          <div class="pillar-tags"><span class="pillar-tag">Looker Studio</span><span class="pillar-tag">BigQuery</span><span class="pillar-tag">Multi-Touch</span><span class="pillar-tag">CAC/ROAS</span></div>
+        </div>
+
+        <div class="pillar">
+          <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="pillar-num">06 — Systems</div>
+          <h3>Client Systems & Fulfillment</h3>
+          <p class="pillar-desc">White-label PPC fulfillment, structured account audits, onboarding frameworks, and handover SOPs — built for agencies and operators who need a reliable execution partner.</p>
+          <div class="pillar-tags"><span class="pillar-tag">White-Label PPC</span><span class="pillar-tag">Account Audits</span><span class="pillar-tag">SOPs</span><span class="pillar-tag">Agency Partner</span></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div id="services" class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-label">One-Time Services</span>
+        <h2>Flat-rate fixes for urgent Google Ads problems.</h2>
+        <p>No retainer, no lock-in. Pick the fix you need and get it done.</p>
+      </div>
+      <div class="services-header reveal">
+        <span class="services-note">All prices in USD · Secure checkout via Stripe</span>
+      </div>
+      <div class="services-grid stagger">
+
+        <div class="service-card">
+          <div class="badge badge-urgent">Most Urgent</div>
+          <div class="service-tag">Compliance & Reinstatement</div>
+          <div class="service-title">Google Ads Misrepresentation Fix</div>
+          <div class="service-price"><div class="price-val">$799</div><div class="price-note">one-time</div></div>
+          <div class="service-desc">Your account got flagged for misrepresentation. This fix gets you reinstated — fast and clean, with the right compliance changes so it doesn't happen again.</div>
+          <ul class="service-includes">
+            <li>Compliance audit of account and assets</li>
+            <li>Legal page rewrite for compliance</li>
+            <li>Product feed cleanup if needed</li>
+            <li>Reinstatement support end-to-end</li>
+          </ul>
+          <a href="https://book.stripe.com/eVq5kD71udcOeTAaKL4Rq00" target="_blank" rel="noopener" class="service-cta">Get Misrepresentation Fix →</a>
+        </div>
+
+        <div class="service-card">
+          <div class="badge badge-win">Quick Win</div>
+          <div class="service-tag">Audit & Strategy</div>
+          <div class="service-title">Basic Mini Audit & Action Plan</div>
+          <div class="service-price"><div class="price-val">$500</div><div class="price-note">one-time</div></div>
+          <div class="service-desc">A sharp-eyed review of your account with a prioritized 30-day action plan — no fluff, just a clear ranked list of what to fix first and why.</div>
+          <ul class="service-includes">
+            <li>Full account health check</li>
+            <li>Basic competitor analysis (2–3)</li>
+            <li>Prioritized 30-day action plan</li>
+          </ul>
+          <a href="https://buy.stripe.com/bJefZhclO3CecLsdWX4Rq0q" target="_blank" rel="noopener" class="service-cta">Get Mini Audit →</a>
+        </div>
+
+        <div class="service-card featured">
+          <div class="badge badge-popular">Most Popular</div>
+          <div class="service-tag">Tracking Infrastructure</div>
+          <div class="service-title">GA4 & GTM Setup</div>
+          <div class="service-price"><div class="price-val">$999</div><div class="price-note">one-time</div></div>
+          <div class="service-desc">Get your tracking infrastructure right from the ground up — GA4, GTM, conversions, and full validation so Google's AI bids on clean, accurate signals.</div>
+          <ul class="service-includes">
+            <li>GA4 property setup and configuration</li>
+            <li>GTM container + event setup</li>
+            <li>Conversion tracking end-to-end</li>
+            <li>Full event testing and validation</li>
+          </ul>
+          <a href="https://buy.stripe.com/cNibJ1etWa0CeTA1ab4Rq03" target="_blank" rel="noopener" class="service-cta">Get Tracking Setup →</a>
+        </div>
+
+        <div class="service-card">
+          <div class="badge badge-value">Best Value</div>
+          <div class="service-tag">Reporting</div>
+          <div class="service-title">Custom Looker Studio Dashboard</div>
+          <div class="service-price"><div class="price-val">$150</div><div class="price-note">one-time</div></div>
+          <div class="service-desc">Replace bloated agency reports with a clean, real-time Looker Studio dashboard that shows exactly what's driving revenue — and what isn't.</div>
+          <ul class="service-includes">
+            <li>Automated real-time reporting</li>
+            <li>KPIs that actually matter (ROAS, CAC)</li>
+            <li>Clean, shareable dashboard link</li>
+          </ul>
+          <a href="https://buy.stripe.com/cNibJ1etWa0CeTA1ab4Rq03" target="_blank" rel="noopener" class="service-cta">Get Dashboard →</a>
+        </div>
+
+      </div>
+
+      <!-- Annual -->
+      <div class="annual-card reveal-up" style="transition-delay:.1s">
+        <div>
+          <div class="annual-label">Ongoing Partnership</div>
+          <div class="annual-title">12-Month Growth Engagement</div>
+          <div class="annual-desc">Full paid-acquisition infrastructure — strategy, tracking, campaign build, monthly optimization, and quarterly planning. For founders and operators who want a system, not just a vendor.</div>
+        </div>
+        <div class="annual-price">
+          <div class="price-val">$2,500<span style="font-size:16px;font-weight:400;opacity:.5">/mo</span></div>
+          <div class="price-note">or $30,000 annually</div>
+          <a href="https://cal.com/hanslacida" target="_blank" rel="noopener" class="annual-cta">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            Book a call to discuss →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VERTICALS -->
+  <div id="verticals" class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-label">Verticals</span>
+        <h2>Industries I know well.</h2>
+        <p>Lead vertical is eCommerce and DTC. The others are active specialties — not checkboxes.</p>
+      </div>
+      <div class="niches-grid stagger">
+        <div class="niche-card">
+          <div class="niche-num">01</div>
+          <div class="niche-title">eCommerce & DTC</div>
+          <div class="niche-desc">Shopping, PMax, Shopify/WooCommerce tracking, feed optimization, seasonal scaling.</div>
+          <div class="niche-proof"><span class="niche-stat">70× peak ROAS</span><span class="niche-stat">$1.02M/mo sales</span></div>
+        </div>
+        <div class="niche-card">
+          <div class="niche-num">02</div>
+          <div class="niche-title">Healthcare / MedSpa</div>
+          <div class="niche-desc">Compliant structure, lead quality frameworks, call tracking, regulated ad policies.</div>
+          <div class="niche-proof"><span class="niche-stat">−53% CPA</span><span class="niche-stat">$300K/mo managed</span></div>
+        </div>
+        <div class="niche-card">
+          <div class="niche-num">03</div>
+          <div class="niche-title">B2B & Enterprise</div>
+          <div class="niche-desc">Long sales cycles, CRM integration, pipeline attribution, offline conversion tracking.</div>
+          <div class="niche-proof"><span class="niche-stat">−39% CPA</span><span class="niche-stat">+50% conv. at half spend</span></div>
+        </div>
+        <div class="niche-card">
+          <div class="niche-num">04</div>
+          <div class="niche-title">Legal / Finance</div>
+          <div class="niche-desc">High-intent search, local service ads, CPA control in competitive auctions.</div>
+          <div class="niche-proof"><span class="niche-stat">High-intent search</span><span class="niche-stat">Local service ads</span></div>
+        </div>
+        <div class="niche-card">
+          <div class="niche-num">05</div>
+          <div class="niche-title">Home Services</div>
+          <div class="niche-desc">Local campaigns, call tracking, demand generation, geo-bid strategy.</div>
+          <div class="niche-proof"><span class="niche-stat">3× call growth</span><span class="niche-stat">112M+ impressions</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div id="faq" class="section">
+    <div class="wrap-narrow">
+      <div class="section-head reveal">
+        <span class="section-label">FAQ</span>
+        <h2>Questions clients and decision makers ask.</h2>
+        <p>Answered directly, no fluff.</p>
+      </div>
+      <div class="faq-list reveal-up">
+
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">What kind of role are you looking for?</span>
+            <div class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </button>
+          <div class="faq-body"><p class="faq-a">A <strong>Performance Marketing Manager or Growth Marketing Manager</strong> role — in-house, ideally with ownership of the paid search function end to end. US market preferred, fully remote.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">What platforms and verticals do you specialize in?</span>
+            <div class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </button>
+          <div class="faq-body"><p class="faq-a"><strong>Google Ads is the core</strong> — Search, Shopping, Performance Max, and the tracking infrastructure underneath. Verticals: e-commerce, healthcare/medspa, and B2B. Agency-tested across 50+ concurrent accounts.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">Can I see a live account walkthrough?</span>
+            <div class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </button>
+          <div class="faq-body"><p class="faq-a"><strong>Yes — by request only.</strong> Live account access is shared exclusively during a recorded screen-share session with me. Book a call and we'll set it up: <a href="https://cal.com/hanslacida" target="_blank" rel="noopener">cal.com/hanslacida</a>.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">Do you only work on Google Ads, or can you handle other platforms?</span>
+            <div class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </button>
+          <div class="faq-body"><p class="faq-a">Google Ads is the core, but I'm hands-on with a wider stack. <strong>Paid social:</strong> Meta Ads, TikTok. <strong>Programmatic:</strong> DV360. <strong>Travel and hospitality:</strong> Booking.com Ads, Expedia TravelAds, Google Hotel Ads, OTA metasearch bidding. <strong>Mobile:</strong> SKAdNetwork (SKA). I'm open to specialized platforms — same systems-thinking applies across any channel.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">Are you AI-ready? Do you use AI in your workflow?</span>
+            <div class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </button>
+          <div class="faq-body"><p class="faq-a"><strong>Yes — daily.</strong> I use Claude and ChatGPT as active parts of my workflow: research, copy angle development, campaign audit analysis, and anomaly investigation. AI handles speed; I handle judgment. Every output gets reviewed before it touches a live account or a client deliverable.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">What's the best way to reach you?</span>
+            <div class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </button>
+          <div class="faq-body"><p class="faq-a">Book a call at <a href="https://cal.com/hanslacida" target="_blank" rel="noopener">cal.com/hanslacida</a>, WhatsApp at <a href="https://wa.me/639761053409" target="_blank" rel="noopener">+63 976 105 3409</a>, or email <a href="mailto:hello@hanslacida.com">hello@hanslacida.com</a>.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- DISCOVERY CTA -->
+  <div class="section" style="padding-bottom:72px">
+    <div class="wrap-narrow">
+      <div class="discovery reveal-scale">
+        <h3>Not sure what you need?</h3>
+        <p>Tell me what's broken. I'll tell you the fastest path to fixing it — and whether any of these engagements are the right fit.</p>
+        <a href="https://book.zeldigital.com/" target="_blank" rel="noopener" class="btn-solid" style="display:inline-flex;margin:0 auto">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Book 10-Min Discovery Call
+        </a>
+        <div class="discovery-meta">hello@hanslacida.com &nbsp;·&nbsp; No obligation &nbsp;·&nbsp; No pitch deck</div>
+
+        <div class="reach-grid" style="margin-top:36px">
+          <a href="https://cal.com/hanslacida" target="_blank" rel="noopener" class="reach-card">
+            <div class="reach-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01"/></svg></div>
+            <div class="reach-label">Book a call</div>
+            <div class="reach-value">cal.com/hanslacida</div>
+          </a>
+          <a href="https://wa.me/639761053409" target="_blank" rel="noopener" class="reach-card">
+            <div class="reach-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+            <div class="reach-label">WhatsApp</div>
+            <div class="reach-value">+63 976 105 3409</div>
+          </a>
+          <a href="mailto:hello@hanslacida.com" class="reach-card">
+            <div class="reach-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+            <div class="reach-label">Email</div>
+            <div class="reach-value">hello@hanslacida.com</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Mobile nav -->
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="#pillars" data-section="pillars"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Pillars</a>
+  <a href="#services" data-section="services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Services</a>
+  <a href="#verticals" data-section="verticals"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Verticals</a>
+  <a href="#faq" data-section="faq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg>FAQ</a>
+  <a href="https://book.zeldigital.com/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Book</a>
+</nav>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-name">Hans Lacida</div>
+      <div class="footer-brand-desc">Paid Acquisition Systems Operator · Google Ads infrastructure built for measurable, scalable, profitable growth.</div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#pillars">Expertise Pillars</a></li>
+        <li><a href="#services">Services & Pricing</a></li>
+        <li><a href="#verticals">Verticals</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="/">← Back to CV</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Misrepresentation Fix — $799</a></li>
+        <li><a href="#services">Mini Audit — $500</a></li>
+        <li><a href="#services">GA4 & GTM Setup — $999</a></li>
+        <li><a href="#services">Looker Dashboard — $150</a></li>
+        <li><a href="#services">Annual Engagement — $2,500/mo</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="https://cal.com/hanslacida" target="_blank" rel="noopener">cal.com/hanslacida</a></li>
+        <li><a href="https://wa.me/639761053409" target="_blank" rel="noopener">+63 976 105 3409</a></li>
+        <li><a href="mailto:hello@hanslacida.com">hello@hanslacida.com</a></li>
+        <li><a href="https://hanslacida.com" target="_blank" rel="noopener">hanslacida.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Hans Lacida</p>
+    <a href="https://hanslacida.com" target="_blank" rel="noopener">hanslacida.com →</a>
+  </div>
+</footer>
+
+<script>
+// SCROLL REVEAL
+(function(){
+  const els=document.querySelectorAll('.reveal,.reveal-up,.reveal-scale,.stagger');
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}});
+  },{threshold:.1,rootMargin:'0px 0px -36px 0px'});
+  document.querySelectorAll('.hero .reveal,.hero .reveal-scale,.hero .stagger').forEach(el=>{
+    requestAnimationFrame(()=>setTimeout(()=>el.classList.add('visible'),40));
+  });
+  els.forEach(el=>{if(!el.closest('.hero'))io.observe(el)});
+})();
+
+// FAQ ACCORDION
+(function(){
+  document.querySelectorAll('.faq-trigger').forEach(trigger=>{
+    trigger.addEventListener('click',()=>{
+      const item=trigger.closest('.faq-item');
+      const body=item.querySelector('.faq-body');
+      const isOpen=item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o=>{
+        o.classList.remove('open');
+        o.querySelector('.faq-body').style.maxHeight='0';
+        o.querySelector('.faq-trigger').setAttribute('aria-expanded','false');
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        body.style.maxHeight=body.scrollHeight+'px';
+        trigger.setAttribute('aria-expanded','true');
+      }
+    });
+  });
+})();
+
+// MOBILE NAV ACTIVE
+(function(){
+  const mobileLinks=document.querySelectorAll('#mobile-nav a[data-section]');
+  const sections=['pillars','services','verticals','faq'];
+  function getActive(){
+    const mid=window.innerHeight*.45;
+    let active=null;
+    sections.forEach(id=>{
+      const el=document.getElementById(id);
+      if(el&&el.getBoundingClientRect().top<=mid)active=id;
+    });
+    return active;
+  }
+  function update(){
+    const active=getActive();
+    mobileLinks.forEach(l=>l.classList.toggle('active',l.dataset.section===active));
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  update();
+})();
+</script>
+</body>
+</html>
