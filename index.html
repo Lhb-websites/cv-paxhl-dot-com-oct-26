@@ -76,6 +76,45 @@ nav.top-nav{
 .nav-btn{font-size:13px;font-weight:500;background:var(--purple);color:#fff;padding:7px 18px;border-radius:8px;transition:opacity .15s,transform .15s}
 .nav-btn:hover{opacity:.85;transform:translateY(-1px)}
 
+/* ── NAV DROPDOWN ── */
+.nav-item{position:relative}
+.nav-item:hover .nav-dropdown{opacity:1;pointer-events:auto;transform:translateY(0)}
+.nav-dropdown{
+  position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(-6px);
+  background:rgba(13,13,18,0.97);border:1px solid var(--border2);border-radius:12px;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  box-shadow:0 16px 48px rgba(0,0,0,0.5);
+  opacity:0;pointer-events:none;
+  transition:opacity .2s cubic-bezier(.22,1,.36,1),transform .2s cubic-bezier(.22,1,.36,1);
+  width:240px;overflow:hidden;z-index:200;
+  /* keep visible when moving cursor from link to dropdown */
+}
+.nav-dropdown::before{
+  content:'';position:absolute;top:-8px;left:0;right:0;height:8px;
+}
+.nav-dropdown-inner{padding:6px}
+.nav-dropdown-item{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 12px;border-radius:7px;
+  font-size:13px;color:var(--text2);
+  transition:background .12s,color .12s;
+  cursor:pointer;
+}
+.nav-dropdown-item:hover{background:var(--purple-dim);color:var(--text)}
+.nav-dropdown-item:hover .dd-dot{background:var(--purple)}
+.dd-dot{width:5px;height:5px;border-radius:50%;background:var(--border2);flex-shrink:0;transition:background .15s}
+.nav-dropdown-divider{height:1px;background:var(--border);margin:4px 6px}
+.nav-dropdown-cta{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  padding:10px 12px;border-radius:7px;margin:2px 0;
+  font-size:12px;font-weight:500;
+  color:#38bdf8;
+  background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.2);
+  transition:background .15s,border-color .15s;
+}
+.nav-dropdown-cta:hover{background:rgba(56,189,248,0.14);border-color:rgba(56,189,248,0.35)}
+.nav-dropdown-cta svg{flex-shrink:0;opacity:.7}
+
 /* ── LAYOUT ── */
 .page{position:relative;z-index:1}
 .wrap{max-width:1100px;margin:0 auto;padding:0 32px}
@@ -376,7 +415,24 @@ footer{border-top:1px solid var(--border);padding:40px 0 env(safe-area-inset-bot
       <li><a href="#highlights">Results</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#expertise">Expertise</a></li>
+      <li class="nav-item">
+        <a href="#expertise">Expertise</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-inner">
+            <div class="nav-dropdown-item" onclick="document.getElementById('expertise').scrollIntoView({behavior:'smooth'});"><div class="dd-dot"></div>Paid Acquisition Systems</div>
+            <div class="nav-dropdown-item" onclick="document.getElementById('expertise').scrollIntoView({behavior:'smooth'});"><div class="dd-dot"></div>Tracking & Signal Quality</div>
+            <div class="nav-dropdown-item" onclick="document.getElementById('expertise').scrollIntoView({behavior:'smooth'});"><div class="dd-dot"></div>Reporting & Dashboards</div>
+            <div class="nav-dropdown-item" onclick="document.getElementById('expertise').scrollIntoView({behavior:'smooth'});"><div class="dd-dot"></div>Team Leadership & Ops</div>
+            <div class="nav-dropdown-item" onclick="document.getElementById('expertise').scrollIntoView({behavior:'smooth'});"><div class="dd-dot"></div>eCommerce Performance</div>
+            <div class="nav-dropdown-item" onclick="document.getElementById('expertise').scrollIntoView({behavior:'smooth'});"><div class="dd-dot"></div>Healthcare & Lead Gen</div>
+            <div class="nav-dropdown-divider"></div>
+            <a href="https://expertise.paxhl.com" target="_blank" rel="noopener" class="nav-dropdown-cta">
+              View all areas of expertise
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+      </li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
