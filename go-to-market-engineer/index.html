@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NV0TGL0CVG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NV0TGL0CVG');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hans Lacida — Go-to-Market Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0d0d12;--bg2:#13131c;--bg3:#1a1a27;
+  --border:#23233a;--border2:#2e2e4a;
+  --purple:#7c6dfa;--purple-dim:rgba(124,109,250,0.12);--purple-glow:rgba(124,109,250,0.25);
+  --green:#22d3a3;--green-dim:rgba(34,211,163,0.1);
+  --amber:#f59e0b;--amber-dim:rgba(245,158,11,0.1);
+  --text:#eeeef5;--text2:#8888aa;--text3:#55556a;
+  color-scheme:dark;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+/* ── ORBS ── */
+.orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;opacity:0.55}
+.orb-1{width:500px;height:500px;background:radial-gradient(circle,rgba(124,109,250,0.45),transparent 70%);top:-120px;left:-100px;animation:orbDrift1 14s ease-in-out infinite}
+.orb-2{width:400px;height:400px;background:radial-gradient(circle,rgba(34,211,163,0.25),transparent 70%);top:60px;right:-80px;animation:orbDrift2 18s ease-in-out infinite}
+@keyframes orbDrift1{0%,100%{transform:translate(0,0)}50%{transform:translate(24px,16px)}}
+@keyframes orbDrift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-18px,24px)}}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-up{opacity:0;transform:translateY(40px);transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1)}
+.reveal-up.visible{opacity:1;transform:translateY(0)}
+.reveal-scale{opacity:0;transform:scale(.97);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+.stagger>*{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.stagger.visible>*{opacity:1;transform:translateY(0)}
+.stagger.visible>*:nth-child(1){transition-delay:.04s}
+.stagger.visible>*:nth-child(2){transition-delay:.10s}
+.stagger.visible>*:nth-child(3){transition-delay:.16s}
+.stagger.visible>*:nth-child(4){transition-delay:.22s}
+.stagger.visible>*:nth-child(5){transition-delay:.28s}
+.stagger.visible>*:nth-child(6){transition-delay:.34s}
+.stagger.visible>*:nth-child(7){transition-delay:.40s}
+.stagger.visible>*:nth-child(8){transition-delay:.46s}
+
+/* ── NAV ── */
+nav.top-nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:env(safe-area-inset-top,0px) 0 0;
+  background:rgba(13,13,18,0.75);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{max-width:1100px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav-logo{font-size:14px;font-weight:600;color:var(--text);letter-spacing:-0.01em}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:13px;color:var(--text2);transition:color .15s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--purple);transition:width .25s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-links a.active{color:var(--text)}
+.nav-btn{font-size:13px;font-weight:500;background:var(--purple);color:#fff;padding:7px 18px;border-radius:8px;transition:opacity .15s,transform .15s}
+.nav-btn:hover{opacity:.85;transform:translateY(-1px)}
+
+/* ── NAV DROPDOWN ── */
+.nav-item{position:relative}
+.nav-item:hover .nav-dropdown{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.nav-dropdown{
+  position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(-6px);
+  background:rgba(13,13,18,0.97);border:1px solid var(--border2);border-radius:12px;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  box-shadow:0 16px 48px rgba(0,0,0,0.5);
+  opacity:0;pointer-events:none;
+  transition:opacity .2s cubic-bezier(.22,1,.36,1),transform .2s cubic-bezier(.22,1,.36,1);
+  width:240px;overflow:hidden;z-index:200;
+}
+.nav-dropdown::before{content:'';position:absolute;top:-8px;left:0;right:0;height:8px}
+.nav-dropdown-inner{padding:6px}
+.nav-dropdown-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:7px;font-size:13px;color:var(--text2);transition:background .12s,color .12s;cursor:pointer}
+.nav-dropdown-item:hover{background:var(--purple-dim);color:var(--text)}
+.nav-dropdown-item:hover .dd-dot{background:var(--purple)}
+.dd-dot{width:5px;height:5px;border-radius:50%;background:var(--border2);flex-shrink:0;transition:background .15s}
+.nav-dropdown-divider{height:1px;background:var(--border);margin:4px 6px}
+.nav-dropdown-cta{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;border-radius:7px;margin:2px 0;font-size:12px;font-weight:500;color:#38bdf8;background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.2);transition:background .15s,border-color .15s}
+.nav-dropdown-cta:hover{background:rgba(56,189,248,0.14);border-color:rgba(56,189,248,0.35)}
+.nav-dropdown-cta svg{flex-shrink:0;opacity:.7}
+
+/* ── LAYOUT ── */
+.page{position:relative;z-index:1}
+.wrap{max-width:1100px;margin:0 auto;padding:0 32px}
+.wrap-narrow{max-width:800px;margin:0 auto;padding:0 32px}
+
+/* ── HERO ── */
+.hero{padding:140px 0 80px;text-align:center}
+.hero-avatar{width:88px;height:88px;border-radius:50%;margin:0 auto 20px;overflow:hidden;background:none;border:3px solid rgba(124,109,250,0.4);box-shadow:0 0 0 6px rgba(124,109,250,0.07),0 0 40px rgba(124,109,250,0.3);animation:avatarPulse 4s ease-in-out infinite}
+.hero-avatar img{width:100%;height:100%;object-fit:cover;object-position:center 15%;border-radius:50%}
+@keyframes avatarPulse{0%,100%{box-shadow:0 0 0 6px rgba(124,109,250,0.07),0 0 40px rgba(124,109,250,0.3)}50%{box-shadow:0 0 0 10px rgba(124,109,250,0.04),0 0 60px rgba(124,109,250,0.42)}}
+.hero h1{font-size:clamp(28px,5vw,48px);font-weight:700;letter-spacing:-0.03em;color:var(--text);margin-bottom:8px;line-height:1.1}
+.hero-role{font-size:16px;font-weight:500;background:linear-gradient(90deg,var(--purple),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:20px}
+.hero-bio{font-size:15px;color:var(--text2);max-width:580px;margin:0 auto 12px;line-height:1.7}
+.hero-bio strong{color:var(--text);font-weight:500}
+.hero-tag{font-size:13px;color:var(--text3);margin-bottom:28px;font-family:'Fira Code',monospace;display:block}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.btn-solid{display:inline-flex;align-items:center;gap:8px;background:var(--purple);color:#fff;font-size:14px;font-weight:500;padding:10px 22px;border-radius:8px;transition:opacity .15s,transform .15s,box-shadow .15s}
+.btn-solid:hover{opacity:.9;transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,109,250,0.4)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border2);color:var(--text2);font-size:14px;padding:10px 22px;border-radius:8px;transition:border-color .15s,color .15s,transform .15s}
+.btn-outline:hover{border-color:var(--purple);color:var(--text);transform:translateY(-2px)}
+.hero-socials{display:flex;gap:20px;justify-content:center}
+.hero-socials a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;border:1px solid var(--border);color:var(--text3);transition:border-color .15s,color .15s,transform .15s,background .15s}
+.hero-socials a:hover{border-color:var(--purple);color:var(--purple);transform:translateY(-2px);background:var(--purple-dim)}
+
+/* ── PIPELINE VISUAL ── */
+.pipeline-section{padding:60px 0 0}
+.pipeline-label{font-family:'Fira Code',monospace;font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;text-align:center;margin-bottom:20px}
+.pipeline-track{display:flex;align-items:center;gap:0;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.pipeline-track::-webkit-scrollbar{display:none}
+.pipe-step{flex:1;min-width:110px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 12px;display:flex;flex-direction:column;gap:4px;position:relative;transition:border-color .2s,background .2s}
+.pipe-step:hover{border-color:var(--purple);background:var(--bg3)}
+.pipe-step+.pipe-step{margin-left:-1px;border-radius:0}
+.pipe-step:first-child{border-radius:10px 0 0 10px}
+.pipe-step:last-child{border-radius:0 10px 10px 0}
+.pipe-num{font-family:'Fira Code',monospace;font-size:10px;color:var(--text3)}
+.pipe-name{font-size:12px;font-weight:600;color:var(--text);line-height:1.3}
+.pipe-tool{font-size:11px;color:var(--green);font-family:'Fira Code',monospace}
+.pipe-arrow{font-size:14px;color:var(--border2);flex-shrink:0;padding:0 2px;align-self:center;display:none}
+
+/* ── SECTION ── */
+.section{padding:80px 0;border-top:1px solid var(--border)}
+.section-head{text-align:center;margin-bottom:48px}
+.section-head h2{font-size:clamp(22px,3vw,30px);font-weight:700;letter-spacing:-0.02em;margin-bottom:10px}
+.section-head p{font-size:15px;color:var(--text2);max-width:500px;margin:0 auto}
+
+/* ── HIGHLIGHTS ── */
+.highlights{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.hl-cell{background:var(--bg2);padding:28px 20px;display:flex;flex-direction:column;gap:4px;align-items:center;text-align:center;transition:background .2s}
+.hl-cell:hover{background:var(--bg3)}
+.hl-val{font-size:32px;font-weight:700;letter-spacing:-0.04em;background:linear-gradient(135deg,var(--purple),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.hl-lab{font-size:12px;color:var(--text2);line-height:1.4}
+
+/* ── GTM STACK BLOCKS ── */
+.gtm-stack{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:32px}
+.gtm-block{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:24px;transition:border-color .2s,transform .2s}
+.gtm-block:hover{border-color:var(--border2);transform:translateY(-2px)}
+.gtm-block-icon{width:36px;height:36px;border-radius:8px;background:var(--purple-dim);display:flex;align-items:center;justify-content:center;color:var(--purple);margin-bottom:14px}
+.gtm-block h3{font-size:14px;font-weight:600;margin-bottom:8px}
+.gtm-block p{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:12px}
+.gtm-tools{display:flex;flex-wrap:wrap;gap:6px}
+.gtm-tool-tag{font-family:'Fira Code',monospace;font-size:11px;color:var(--green);background:var(--green-dim);border:1px solid rgba(34,211,163,0.2);padding:3px 8px;border-radius:4px}
+.gtm-tool-tag.amber{color:var(--amber);background:var(--amber-dim);border-color:rgba(245,158,11,0.2)}
+.gtm-tool-tag.purple{color:var(--purple);background:var(--purple-dim);border-color:rgba(124,109,250,0.2)}
+
+/* ── EXPERIENCE ── */
+.exp-wrap{display:flex;flex-direction:column;gap:16px}
+.exp-item{display:grid;grid-template-columns:180px 1fr;background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .2s,transform .2s,box-shadow .2s}
+.exp-item:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,0.25)}
+.exp-sidebar{padding:24px 20px;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:6px}
+.exp-period{font-family:'Fira Code',monospace;font-size:11px;color:var(--text3);line-height:1.4}
+.exp-vertical{display:flex;align-items:center;gap:6px;margin-top:4px}
+.exp-dot{width:8px;height:8px;border-radius:50%;background:var(--purple);flex-shrink:0}
+.exp-market{font-size:11px;color:var(--purple)}
+.exp-body{padding:24px 28px}
+.exp-title{font-size:15px;font-weight:600;letter-spacing:-0.01em;margin-bottom:4px}
+.exp-company{font-size:12px;color:var(--text3);margin-bottom:16px;font-family:'Fira Code',monospace}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:8px}
+.exp-bullets li{font-size:13px;color:var(--text2);line-height:1.6;padding-left:14px;position:relative}
+.exp-bullets li::before{content:'';position:absolute;left:0;top:8px;width:4px;height:4px;border-radius:50%;background:var(--border2)}
+.exp-bullets li strong{color:var(--text);font-weight:500}
+.exp-bullets li .num{color:var(--green);font-family:'Fira Code',monospace;font-size:12px}
+
+/* ── RESULTS ── */
+.results-note{display:flex;align-items:flex-start;gap:10px;background:var(--purple-dim);border:1px solid var(--purple-glow);border-radius:10px;padding:14px 18px;margin-bottom:28px}
+.results-note p{font-size:13px;color:var(--text2);line-height:1.6}
+.results-note svg{flex-shrink:0;margin-top:1px;color:var(--purple)}
+.results-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.result-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:16px;transition:border-color .2s,transform .2s,box-shadow .2s}
+.result-card:hover{border-color:var(--purple);transform:translateY(-2px);box-shadow:0 8px 32px rgba(124,109,250,0.1)}
+.result-tag{font-family:'Fira Code',monospace;font-size:11px;color:var(--text3)}
+.result-title{font-size:14px;font-weight:600;letter-spacing:-0.01em;line-height:1.4}
+.result-desc{font-size:13px;color:var(--text2);line-height:1.6}
+.result-metrics{display:flex;gap:20px;flex-wrap:wrap;padding-top:16px;border-top:1px solid var(--border)}
+.rm{display:flex;flex-direction:column;gap:3px}
+.rm-val{font-size:22px;font-weight:700;letter-spacing:-0.04em;line-height:1}
+.rm-val.g{color:var(--green)}
+.rm-val.p{color:var(--purple)}
+.rm-lab{font-size:11px;color:var(--text3)}
+
+/* ── STACK ── */
+.stack-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:20px}
+.stack-cell{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 14px 12px;display:flex;align-items:center;gap:10px;transition:border-color .15s,transform .15s,background .15s}
+.stack-cell:hover{border-color:var(--purple);background:var(--bg3);transform:translateY(-2px)}
+.stack-icon{width:28px;height:28px;border-radius:6px;background:var(--purple-dim);display:flex;align-items:center;justify-content:center;color:var(--purple);flex-shrink:0;font-size:12px;font-weight:700;font-family:'Fira Code',monospace}
+.stack-name{font-size:13px;font-weight:500}
+.stack-also{display:flex;flex-wrap:wrap;gap:8px;padding-top:20px;border-top:1px solid var(--border)}
+.chip{font-size:12px;color:var(--text2);background:var(--bg2);border:1px solid var(--border);padding:5px 12px;border-radius:20px;transition:border-color .15s,color .15s,transform .15s}
+.chip:hover{border-color:var(--purple);color:var(--text);transform:translateY(-1px)}
+
+/* ── FAQ ── */
+.faq-list{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.faq-item{border-bottom:1px solid var(--border);overflow:hidden}
+.faq-item:last-child{border-bottom:none}
+.faq-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;cursor:pointer;background:none;border:none;text-align:left;transition:background .15s}
+.faq-trigger:hover{background:var(--bg3)}
+.faq-item.open .faq-trigger{background:var(--bg3)}
+.faq-q{font-size:14px;font-weight:500;color:var(--text);line-height:1.4}
+.faq-chevron{width:22px;height:22px;border-radius:6px;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;color:var(--text3);flex-shrink:0;transition:background .2s,border-color .2s,color .2s,transform .35s cubic-bezier(.22,1,.36,1)}
+.faq-item.open .faq-chevron{background:var(--purple-dim);border-color:var(--purple);color:var(--purple);transform:rotate(180deg)}
+.faq-body{max-height:0;overflow:hidden;transition:max-height .42s cubic-bezier(.22,1,.36,1),opacity .3s ease;opacity:0}
+.faq-item.open .faq-body{opacity:1}
+.faq-a{font-size:13px;color:var(--text2);line-height:1.75;padding:0 24px 20px}
+.faq-a strong{color:var(--text);font-weight:500}
+.faq-a a{color:var(--purple);transition:opacity .15s}
+.faq-a a:hover{opacity:.8;text-decoration:underline}
+
+/* ── CONTACT ── */
+.contact-section{padding:80px 0 60px;border-top:1px solid var(--border)}
+.contact-form-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:40px;max-width:640px;margin:0 auto}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group label{font-size:12px;color:var(--text2);font-family:'Fira Code',monospace}
+.form-group input,.form-group textarea,.form-group select{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:10px 14px;font-family:'Inter',sans-serif;font-size:13px;color:var(--text);outline:none;transition:border-color .15s,box-shadow .15s;resize:none;width:100%}
+.form-group select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2355556a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;cursor:pointer}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--text3)}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(124,109,250,0.12)}
+.form-full{margin-bottom:14px}
+.btn-send{width:100%;padding:12px;border-radius:8px;border:none;cursor:pointer;background:var(--purple);color:#fff;font-size:14px;font-weight:500;font-family:'Inter',sans-serif;transition:opacity .15s,transform .15s,box-shadow .15s}
+.btn-send:hover{opacity:.88;transform:translateY(-1px);box-shadow:0 6px 20px rgba(124,109,250,0.4)}
+.prefer-talk{text-align:center;margin-top:16px;font-size:13px;color:var(--text3)}
+.prefer-talk a{color:var(--purple);transition:opacity .15s}
+.prefer-talk a:hover{opacity:.8;text-decoration:underline}
+.direct-reach{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:640px;margin:28px auto 0}
+.reach-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px 16px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s,transform .2s,box-shadow .2s}
+.reach-card:hover{border-color:var(--purple);transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,109,250,0.1)}
+.reach-icon{color:var(--purple)}
+.reach-label{font-family:'Fira Code',monospace;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em}
+.reach-value{font-size:13px;font-weight:500;color:var(--text)}
+
+/* ── FLOATING NAV ── */
+#section-indicator{position:fixed;left:20px;top:50%;transform:translateY(-50%) scale(0.96);z-index:90;width:180px;background:rgba(13,13,18,0.92);border:1px solid var(--border2);border-radius:12px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
+.si-item{display:flex;align-items:center;gap:10px;cursor:pointer;padding:8px 10px;border-radius:7px;transition:background .15s}
+.si-item:hover{background:var(--purple-dim)}
+.si-item:hover .si-dot{background:var(--purple);transform:scale(1.3)}
+.si-item:hover .si-label{color:var(--text)}
+.si-item.active{background:var(--purple-dim)}
+.si-item.active .si-dot{background:var(--purple);transform:scale(1.4);box-shadow:0 0 6px var(--purple-glow)}
+.si-item.active .si-label{color:var(--purple);font-weight:500}
+.si-dot{width:6px;height:6px;border-radius:50%;background:var(--border2);flex-shrink:0;transition:background .2s,transform .2s,box-shadow .2s}
+.si-label{font-family:'Fira Code',monospace;font-size:12px;color:var(--text2);transition:color .15s;white-space:nowrap}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);padding:40px 0 env(safe-area-inset-bottom,24px)}
+.footer-inner{max-width:1100px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1fr auto auto auto;gap:40px;align-items:start}
+.footer-brand{display:flex;flex-direction:column;gap:8px}
+.footer-brand-name{font-size:14px;font-weight:600;letter-spacing:-0.01em}
+.footer-brand-desc{font-size:12px;color:var(--text3);line-height:1.5;max-width:220px}
+.footer-col h4{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;font-family:'Fira Code',monospace}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-col ul a{font-size:13px;color:var(--text2);transition:color .15s}
+.footer-col ul a:hover{color:var(--text)}
+.footer-bottom{max-width:1100px;margin:28px auto 0;padding:20px 32px 0;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.footer-bottom p{font-size:12px;color:var(--text3)}
+.footer-bottom a{font-size:12px;color:var(--text3);transition:color .15s}
+.footer-bottom a:hover{color:var(--text2)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  #section-indicator{display:none!important}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:28px}
+  .footer-brand{grid-column:1/-1}
+}
+@media(min-width:641px) and (max-width:900px){
+  .wrap,.wrap-narrow{padding:0 24px}
+  .nav-links{display:none}
+  .hero{padding:120px 0 64px}
+  .highlights{grid-template-columns:repeat(2,1fr)}
+  .stack-cols{grid-template-columns:repeat(3,1fr)}
+  .gtm-stack{grid-template-columns:repeat(2,1fr)}
+  .results-grid{grid-template-columns:1fr}
+  .direct-reach{grid-template-columns:repeat(3,1fr)}
+  .exp-item{grid-template-columns:140px 1fr}
+}
+@media(max-width:640px){
+  .wrap,.wrap-narrow{padding:0 16px}
+  .nav-links{display:none}
+  .nav-btn{font-size:12px;padding:6px 14px}
+  .nav-inner{padding:12px 16px}
+  .hero{padding:90px 0 48px}
+  .hero-avatar{width:72px;height:72px}
+  .hero h1{font-size:28px}
+  .hero-role{font-size:14px}
+  .hero-bio{font-size:14px}
+  .btn-solid,.btn-outline{font-size:13px;padding:9px 18px}
+  .highlights{grid-template-columns:repeat(2,1fr)}
+  .hl-val{font-size:24px}
+  .hl-cell{padding:20px 14px}
+  .section{padding:56px 0}
+  .section-head{margin-bottom:32px}
+  .section-head h2{font-size:22px}
+  .exp-item{grid-template-columns:1fr}
+  .exp-sidebar{border-right:none;border-bottom:1px solid var(--border);padding:14px 18px;flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  .exp-period{font-size:10px}
+  .exp-body{padding:18px}
+  .exp-title{font-size:14px}
+  .exp-bullets li{font-size:13px}
+  .results-grid{grid-template-columns:1fr}
+  .result-card{padding:20px}
+  .rm-val{font-size:18px}
+  .stack-cols{grid-template-columns:repeat(2,1fr)}
+  .stack-cell{padding:10px 12px;gap:8px}
+  .stack-name{font-size:12px}
+  .gtm-stack{grid-template-columns:1fr}
+  .gtm-block{padding:18px}
+  .faq-trigger{padding:16px 18px}
+  .faq-q{font-size:13px}
+  .faq-a{font-size:12px;padding:0 18px 16px}
+  .contact-section{padding:56px 0 48px}
+  .contact-form-wrap{padding:24px 18px}
+  .form-row{grid-template-columns:1fr}
+  .direct-reach{grid-template-columns:1fr;max-width:100%}
+  .reach-card{flex-direction:row;align-items:center;gap:14px;padding:16px}
+  .footer-inner{grid-template-columns:1fr;gap:24px;padding:0 16px}
+  .footer-brand{grid-column:auto}
+  .footer-bottom{padding:16px 16px 0;flex-direction:column;align-items:flex-start;gap:8px}
+  .footer-col{display:none}
+  .hero-socials{gap:14px}
+  .pipeline-track{flex-direction:column;gap:4px}
+  .pipe-step{border-radius:10px!important;margin-left:0!important;border:1px solid var(--border)!important}
+}
+@media(max-width:380px){
+  .hero h1{font-size:24px}
+  .highlights{grid-template-columns:1fr 1fr}
+  .hl-val{font-size:20px}
+  .stack-cols{grid-template-columns:1fr 1fr}
+  .hero-btns{flex-direction:column;align-items:center}
+  .btn-solid,.btn-outline{width:100%;justify-content:center}
+}
+@media(max-width:640px){
+  .mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:200;background:rgba(13,13,18,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--border);padding:8px 0 env(safe-area-inset-bottom,8px);justify-content:space-around}
+  .mobile-nav a{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--text3);font-size:10px;font-family:'Fira Code',monospace;padding:4px 8px;transition:color .15s}
+  .mobile-nav a.active,.mobile-nav a:hover{color:var(--purple)}
+  .mobile-nav svg{width:18px;height:18px}
+  body{padding-bottom:calc(56px + env(safe-area-inset-bottom,0px))}
+}
+@media(min-width:641px){.mobile-nav{display:none}}
+</style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<!-- Floating nav -->
+<div id="section-indicator">
+  <div style="padding:12px 14px 10px;border-bottom:1px solid var(--border)">
+    <span style="font-family:'Fira Code',monospace;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em">Sections</span>
+  </div>
+  <div style="padding:6px">
+    <div class="si-item" data-section="highlights"><div class="si-dot"></div><span class="si-label">Highlights</span></div>
+    <div class="si-item" data-section="gtm-stack"><div class="si-dot"></div><span class="si-label">GTM Stack</span></div>
+    <div class="si-item" data-section="experience"><div class="si-dot"></div><span class="si-label">Experience</span></div>
+    <div class="si-item" data-section="results"><div class="si-dot"></div><span class="si-label">Results</span></div>
+    <div class="si-item" data-section="tools"><div class="si-dot"></div><span class="si-label">Tools</span></div>
+    <div class="si-item" data-section="faq"><div class="si-dot"></div><span class="si-label">FAQ</span></div>
+    <div class="si-item" data-section="contact"><div class="si-dot"></div><span class="si-label">Contact</span></div>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav class="top-nav">
+  <div class="nav-inner">
+    <span class="nav-logo">Hans Lacida</span>
+    <ul class="nav-links">
+      <li><a href="#highlights">Highlights</a></li>
+      <li><a href="#gtm-stack">GTM Stack</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li class="nav-item">
+        <a href="#results">Results</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-inner">
+            <div class="nav-dropdown-item" onclick="document.getElementById('results').scrollIntoView({behavior:'smooth'})"><div class="dd-dot"></div>Pipeline Systems Built</div>
+            <div class="nav-dropdown-item" onclick="document.getElementById('results').scrollIntoView({behavior:'smooth'})"><div class="dd-dot"></div>Paid Acquisition Results</div>
+            <div class="nav-dropdown-item" onclick="document.getElementById('results').scrollIntoView({behavior:'smooth'})"><div class="dd-dot"></div>ICP & Lead Enrichment</div>
+            <div class="nav-dropdown-item" onclick="document.getElementById('results').scrollIntoView({behavior:'smooth'})"><div class="dd-dot"></div>Conversion Infrastructure</div>
+            <div class="nav-dropdown-divider"></div>
+            <a href="https://cv.paxhl.com" target="_blank" rel="noopener" class="nav-dropdown-cta">
+              Back to main CV
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+      </li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="https://cal.com/contacthans-meeting" target="_blank" rel="noopener" class="nav-btn">Book a Call</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-avatar reveal-scale" style="transition-delay:.08s">
+        <img src="https://i.ibb.co/1fWcjGrw/ppchans-media-profile.png" alt="Hans Lacida">
+      </div>
+      <h1 class="reveal" style="transition-delay:.18s">Hans Lacida</h1>
+      <p class="hero-role reveal" style="transition-delay:.26s">Go-to-Market Engineer · Paid Acquisition Systems</p>
+      <p class="hero-bio reveal" style="transition-delay:.34s">
+        I build the full acquisition machine — ICP research, enriched lead pipelines, ad infrastructure, and conversion tracking that closes the loop from first touch to closed revenue.<br>
+        <strong>10+ years of paid acquisition data informing every GTM decision.</strong>
+      </p>
+      <span class="hero-tag reveal" style="transition-delay:.40s">Apollo · Claude · Make · 5–8 step outbound pipelines · Google Ads infrastructure</span>
+      <div class="hero-btns reveal" style="transition-delay:.48s">
+        <a href="#gtm-stack" class="btn-solid">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          View GTM Stack
+        </a>
+        <a href="https://drive.google.com/file/d/1-g6nx5Vg2iqKqK9qJ3a6dcbNP-XS4-0k/view?usp=sharing" target="_blank" rel="noopener" class="btn-outline">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          View CV
+        </a>
+      </div>
+      <div class="hero-socials reveal" style="transition-delay:.56s">
+        <a href="mailto:hanzel@hanslacida.com" title="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+
+        <a href="https://cal.com/contacthans-meeting" target="_blank" rel="noopener" title="Book a call"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></a>
+        <a href="https://hanslacida.com" target="_blank" rel="noopener" title="Website"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1-4-10z"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pipeline Visual -->
+  <div class="pipeline-section">
+    <div class="wrap">
+      <p class="pipeline-label reveal">Live outbound pipeline — 8-step sequence</p>
+      <div class="pipeline-track stagger">
+        <div class="pipe-step"><div class="pipe-num">01</div><div class="pipe-name">ICP Definition</div><div class="pipe-tool">Research</div></div>
+        <div class="pipe-step"><div class="pipe-num">02</div><div class="pipe-name">List Build</div><div class="pipe-tool">Apollo</div></div>
+        <div class="pipe-step"><div class="pipe-num">03</div><div class="pipe-name">Contact Enrich</div><div class="pipe-tool">Apollo MCP</div></div>
+        <div class="pipe-step"><div class="pipe-num">04</div><div class="pipe-name">AI Personalize</div><div class="pipe-tool">Claude / GPT</div></div>
+        <div class="pipe-step"><div class="pipe-num">05</div><div class="pipe-name">Sequence Launch</div><div class="pipe-tool">Outreach</div></div>
+        <div class="pipe-step"><div class="pipe-num">06</div><div class="pipe-name">Signal Monitor</div><div class="pipe-tool">Make.com</div></div>
+        <div class="pipe-step"><div class="pipe-num">07</div><div class="pipe-name">Paid Retarget</div><div class="pipe-tool">Google Ads</div></div>
+        <div class="pipe-step"><div class="pipe-num">08</div><div class="pipe-name">Attribution</div><div class="pipe-tool">GA4 + CRM</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Highlights -->
+  <div id="highlights" class="section">
+    <div class="wrap">
+      <div class="section-head reveal"><h2>Career Highlights</h2><p>Revenue-focused execution across paid acquisition and pipeline systems — from first touch to closed deal.</p></div>
+      <div class="highlights stagger">
+        <div class="hl-cell"><div class="hl-val">10+ Yrs</div><div class="hl-lab">Paid acquisition data informing GTM decisions</div></div>
+        <div class="hl-cell"><div class="hl-val">8-step</div><div class="hl-lab">Outbound pipelines built and running</div></div>
+        <div class="hl-cell"><div class="hl-val">70×</div><div class="hl-lab">Peak ROAS — conversion system, not just ads</div></div>
+        <div class="hl-cell"><div class="hl-val">12 Mo</div><div class="hl-lab">Active GTM upskilling — pipeline built and running</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GTM Stack -->
+  <div id="gtm-stack" class="section">
+    <div class="wrap">
+      <div class="section-head reveal"><h2>GTM Stack</h2><p>Built and operated in production — not just on a resume.</p></div>
+      <div class="gtm-stack stagger">
+
+        <div class="gtm-block">
+          <div class="gtm-block-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <h3>ICP Research & List Building</h3>
+          <p>Define the buyer precisely, then build a list of real humans who match — not a broad export.</p>
+          <div class="gtm-tools">
+            <span class="gtm-tool-tag">Apollo.io</span>
+            <span class="gtm-tool-tag">Apollo MCP</span>
+            <span class="gtm-tool-tag purple">LinkedIn</span>
+            <span class="gtm-tool-tag purple">Clay (familiar)</span>
+          </div>
+        </div>
+
+        <div class="gtm-block">
+          <div class="gtm-block-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 8v4l3 3"/><path d="M18 2v4h4"/></svg>
+          </div>
+          <h3>Contact Enrichment</h3>
+          <p>Enrich leads with business signals, role data, and intent before any message is sent.</p>
+          <div class="gtm-tools">
+            <span class="gtm-tool-tag">Apollo MCP</span>
+            <span class="gtm-tool-tag amber">Claude (AI)</span>
+            <span class="gtm-tool-tag amber">ChatGPT (AI)</span>
+            <span class="gtm-tool-tag purple">Make.com</span>
+          </div>
+        </div>
+
+        <div class="gtm-block">
+          <div class="gtm-block-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>AI-Personalized Outreach</h3>
+          <p>Claude and ChatGPT connected to pipeline — message angles generated from enriched contact data, not templates.</p>
+          <div class="gtm-tools">
+            <span class="gtm-tool-tag amber">Claude</span>
+            <span class="gtm-tool-tag amber">ChatGPT</span>
+            <span class="gtm-tool-tag purple">MCP connectors</span>
+          </div>
+        </div>
+
+        <div class="gtm-block">
+          <div class="gtm-block-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Paid Acquisition Layer</h3>
+          <p>Google Ads infrastructure underneath the outbound motion — retargeting, intent capture, and attribution back to pipeline.</p>
+          <div class="gtm-tools">
+            <span class="gtm-tool-tag">Google Ads</span>
+            <span class="gtm-tool-tag">PMax</span>
+            <span class="gtm-tool-tag">GA4</span>
+            <span class="gtm-tool-tag purple">GTM</span>
+          </div>
+        </div>
+
+        <div class="gtm-block">
+          <div class="gtm-block-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>Attribution & Reporting</h3>
+          <p>Close the loop from ad click and outbound touch to actual revenue — no vanity metrics, no inflated platform numbers.</p>
+          <div class="gtm-tools">
+            <span class="gtm-tool-tag">Looker Studio</span>
+            <span class="gtm-tool-tag">GA4</span>
+            <span class="gtm-tool-tag amber">CRM signals</span>
+            <span class="gtm-tool-tag purple">First-party data</span>
+          </div>
+        </div>
+
+        <div class="gtm-block">
+          <div class="gtm-block-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <h3>Copy & Message Architecture</h3>
+          <p>Ad copy, outbound sequences, and landing page angles — written from ICP research and tested against real conversion data.</p>
+          <div class="gtm-tools">
+            <span class="gtm-tool-tag amber">10+ yrs copy data</span>
+            <span class="gtm-tool-tag">A/B testing</span>
+            <span class="gtm-tool-tag purple">Landing pages</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Experience -->
+  <div id="experience" class="section">
+    <div class="wrap">
+      <div class="section-head reveal"><h2>Experience</h2><p>GTM execution in paid acquisition, outbound systems, and pipeline infrastructure — across 12 months of active upskilling.</p></div>
+      <div class="exp-wrap">
+
+        <div class="exp-item reveal-up" style="transition-delay:.04s">
+          <div class="exp-sidebar"><div class="exp-period">2025<br>Present</div><div class="exp-vertical"><div class="exp-dot"></div><span class="exp-market">Kaizenstrategy</span></div></div>
+          <div class="exp-body">
+            <div class="exp-title">GTM Engineer — Outbound Pipeline Builder</div>
+            <div class="exp-company">Kaizenstrategy Solutions LLC · Self-directed</div>
+            <ul class="exp-bullets">
+              <li>Built and operated a <strong>5–8 step outbound pipeline</strong> using Apollo MCP connected to Claude and ChatGPT — ICP research through to enriched, personalized contact lists</li>
+              <li>Connected AI models directly into pipeline workflow via <strong>MCP connectors</strong> — no manual copy-paste between tools</li>
+              <li>Researched and defined ICP profiles for target verticals — informed by 10+ years of paid acquisition conversion data, not theory</li>
+              <li>Layered <strong>Google Ads retargeting</strong> as the paid motion underneath outbound sequences — same ICP, two channels, one attribution system</li>
+              <li>Built Looker Studio dashboards closing the loop from outbound touch to pipeline stage to revenue</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item reveal-up" style="transition-delay:.09s">
+          <div class="exp-sidebar"><div class="exp-period">Nov 2023<br>Sep 2026</div><div class="exp-vertical"><div class="exp-dot"></div><span class="exp-market">US Market</span></div></div>
+          <div class="exp-body">
+            <div class="exp-title">Google Ads Specialist — eCommerce (HVAC / Shopify)</div>
+            <div class="exp-company">Direct Client · US</div>
+            <ul class="exp-bullets">
+              <li>Owned Search, Shopping, and PMax campaigns supporting <span class="num">$897K–$1.02M</span> in monthly sales across 35+ months</li>
+              <li>Conversion tracking cleanup <strong>doubled reportable conversions in one month</strong> — same spend, accurate signals, better decisions</li>
+              <li>Maintained data integrity across feeds, campaign structures, and attribution so Google's AI bid on clean signals, not noise</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item reveal-up" style="transition-delay:.14s">
+          <div class="exp-sidebar"><div class="exp-period">Oct 2024<br>May 2025</div><div class="exp-vertical"><div class="exp-dot"></div><span class="exp-market">US Agency</span></div></div>
+          <div class="exp-body">
+            <div class="exp-title">Paid Search Manager — Healthcare Marketing Agency</div>
+            <div class="exp-company">Remote · US</div>
+            <ul class="exp-bullets">
+              <li>Managed a <span class="num">$300K/month</span> Google Ads healthcare program — budget pacing, account audits, and lead quality oversight</li>
+              <li>Built lead segmentation logic improving conversion tracking accuracy by <strong>15%</strong> — qualified leads routed to the right campaigns</li>
+              <li>Corrected attribution inconsistencies across client reporting — decisions made on accurate data, not inflated platform numbers</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item reveal-up" style="transition-delay:.19s">
+          <div class="exp-sidebar"><div class="exp-period">Oct 2022<br>Aug 2026</div><div class="exp-vertical"><div class="exp-dot"></div><span class="exp-market">US & AU</span></div></div>
+          <div class="exp-body">
+            <div class="exp-title">Independent Paid Acquisition Consultant</div>
+            <div class="exp-company">Remote · US & AU Markets</div>
+            <ul class="exp-bullets">
+              <li>Planned, launched, and optimized full-funnel paid acquisition campaigns — the conversion infrastructure that GTM pipelines need to close</li>
+              <li>Implemented GA4 and GTM tracking end-to-end — accurate attribution for revenue and lead generation clients</li>
+              <li>Built automated Looker Studio dashboards giving leadership visibility into spend, ROAS, CAC, and pipeline</li>
+              <li><strong>Directed and reviewed junior media buyers</strong> — QA standards, naming conventions, and onboarding frameworks across multi-account teams</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div id="results" class="section">
+    <div class="wrap">
+      <div class="section-head reveal"><h2>GTM Results</h2><p>What happens when ICP thinking, conversion infrastructure, and the right channel motion work together.</p></div>
+      <div class="results-note reveal">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        <p>Live pipeline walkthroughs available on request — screen-share session showing the Apollo MCP → Claude → outbound workflow end to end. <a href="https://cal.com/contacthans-meeting" target="_blank" rel="noopener">Book a call to schedule one.</a></p>
+      </div>
+      <div class="results-grid stagger">
+        <div class="result-card">
+          <div class="result-tag">Outbound Pipeline · Kaizenstrategy · 2025–Present</div>
+          <div class="result-title">8-step outbound pipeline — ICP research through to AI-personalized outreach</div>
+          <div class="result-desc">Built and operated a live pipeline using Apollo MCP connected to Claude and ChatGPT. ICP definition, contact enrichment, AI message personalization, and attribution — all in one connected system without manual tool-switching.</div>
+          <div class="result-metrics">
+            <div class="rm"><div class="rm-val g">8-step</div><div class="rm-lab">Connected pipeline</div></div>
+            <div class="rm"><div class="rm-val p">3 AI</div><div class="rm-lab">Models integrated</div></div>
+          </div>
+        </div>
+        <div class="result-card">
+          <div class="result-tag">eCommerce · AU/NZ · eBike & Sporting Goods · 90 Days</div>
+          <div class="result-title">Peak 70× ROAS — ICP-aligned campaign structure from the ground up</div>
+          <div class="result-desc">Not just ads — rebuilt the full acquisition structure using buyer intent data as the ICP layer. Right message, right segment, right bid. Fragmented campaigns and weak geo targeting replaced by precision structure.</div>
+          <div class="result-metrics">
+            <div class="rm"><div class="rm-val g">70×</div><div class="rm-lab">Peak ROAS</div></div>
+            <div class="rm"><div class="rm-val p">+50%</div><div class="rm-lab">Growth in 30 days</div></div>
+          </div>
+        </div>
+        <div class="result-card">
+          <div class="result-tag">Healthcare · Lead Gen · California · 90 Days</div>
+          <div class="result-title">CPA cut from $115 to $54 — conversion system rebuild, not just bid changes</div>
+          <div class="result-desc">No attribution, no conversion clarity, $0 in active spend. Built the tracking layer first — CallTrackingMetrics integration, intent segmentation, clean signals. Only then scaled spend. That ordering is GTM thinking.</div>
+          <div class="result-metrics">
+            <div class="rm"><div class="rm-val g">−53%</div><div class="rm-lab">CPA reduction</div></div>
+            <div class="rm"><div class="rm-val p">47</div><div class="rm-lab">Qualified leads, month 1</div></div>
+          </div>
+        </div>
+        <div class="result-card">
+          <div class="result-tag">B2B · Enterprise · Engine Manufacturing · US · 9 Months</div>
+          <div class="result-title">$300K → $150K spend. Conversions up 50%. Classic GTM optimization.</div>
+          <div class="result-desc">ICP mismatch was the core problem — broad targeting burning budget on wrong audiences. Deep audit, restructured segments by time, location, and audience quality. The result of matching the right buyer to the right message.</div>
+          <div class="result-metrics">
+            <div class="rm"><div class="rm-val g">−39%</div><div class="rm-lab">CPA: $23 → $14</div></div>
+            <div class="rm"><div class="rm-val p">+50%</div><div class="rm-lab">Conversions at half spend</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tools -->
+  <div id="tools" class="section">
+    <div class="wrap">
+      <div class="section-head reveal"><h2>Tools & Infrastructure</h2><p>The full stack — outbound, paid, automation, and measurement.</p></div>
+      <div class="reveal-up" style="margin-bottom:32px">
+        <p style="font-family:'Fira Code',monospace;font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px">Outbound & Pipeline</p>
+        <div class="stack-cols stagger">
+          <div class="stack-cell"><div class="stack-icon">AP</div><span class="stack-name">Apollo.io</span></div>
+          <div class="stack-cell"><div class="stack-icon">MCP</div><span class="stack-name">Apollo MCP</span></div>
+          <div class="stack-cell"><div class="stack-icon">CL</div><span class="stack-name">Claude</span></div>
+          <div class="stack-cell"><div class="stack-icon">GP</div><span class="stack-name">ChatGPT</span></div>
+          <div class="stack-cell"><div class="stack-icon">MK</div><span class="stack-name">Make.com</span></div>
+          <div class="stack-cell"><div class="stack-icon">LI</div><span class="stack-name">LinkedIn</span></div>
+          <div class="stack-cell"><div class="stack-icon">CL</div><span class="stack-name">Clay (familiar)</span></div>
+          <div class="stack-cell"><div class="stack-icon">ZP</div><span class="stack-name">ZoomInfo (familiar)</span></div>
+        </div>
+      </div>
+      <div class="reveal-up" style="margin-bottom:32px;transition-delay:.08s">
+        <p style="font-family:'Fira Code',monospace;font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px">Paid Acquisition Layer</p>
+        <div class="stack-cols stagger">
+          <div class="stack-cell"><div class="stack-icon">GS</div><span class="stack-name">Google Search</span></div>
+          <div class="stack-cell"><div class="stack-icon">PM</div><span class="stack-name">Performance Max</span></div>
+          <div class="stack-cell"><div class="stack-icon">SH</div><span class="stack-name">Google Shopping</span></div>
+          <div class="stack-cell"><div class="stack-icon">MA</div><span class="stack-name">Meta Ads</span></div>
+        </div>
+      </div>
+      <div class="reveal-up" style="transition-delay:.14s">
+        <p style="font-family:'Fira Code',monospace;font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px">Measurement & Attribution</p>
+        <div class="stack-cols stagger">
+          <div class="stack-cell"><div class="stack-icon">GA</div><span class="stack-name">GA4</span></div>
+          <div class="stack-cell"><div class="stack-icon">GT</div><span class="stack-name">Google Tag Manager</span></div>
+          <div class="stack-cell"><div class="stack-icon">LS</div><span class="stack-name">Looker Studio</span></div>
+          <div class="stack-cell"><div class="stack-icon">CR</div><span class="stack-name">CallRail / CTM</span></div>
+        </div>
+      </div>
+      <div class="reveal-up" style="margin-top:28px;transition-delay:.20s">
+        <div class="stack-also">
+          <span class="chip">Enhanced Conversions</span><span class="chip">Server-Side Tagging</span><span class="chip">Offline Conversion Import</span><span class="chip">Customer Match</span><span class="chip">First-Party Data Pipelines</span><span class="chip">CRM Signal Integration</span><span class="chip">Lead Scoring Frameworks</span><span class="chip">A/B Testing</span><span class="chip">Landing Page Optimization</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div id="faq" class="section">
+    <div class="wrap-narrow">
+      <div class="section-head reveal"><h2>Frequently Asked Questions</h2><p>GTM-specific questions answered directly.</p></div>
+      <div class="faq-list reveal-up">
+
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">How is a GTM Engineer different from a demand gen or paid ads role?</span>
+            <div class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </button>
+          <div class="faq-body"><p class="faq-a">Demand gen typically owns one channel or one part of the funnel. <strong>GTM engineering is the full acquisition system</strong> — ICP definition, pipeline tooling, outbound sequencing, paid channel layer, and the attribution that closes the loop. I bring 10+ years of paid conversion data to every ICP and copy decision, which most GTM practitioners don't have.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">What does your outbound pipeline actually look like?</span>
+            <div class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </button>
+          <div class="faq-body"><p class="faq-a"><strong>Apollo MCP connected to Claude and ChatGPT</strong> — the AI models pull enrichment data, generate personalized message angles, and feed into the sequence. It's a live, operational pipeline — not a demo. 5 to 8 steps depending on the vertical and the ICP. I can walk you through it on a call: <a href="https://cal.com/contacthans-meeting" target="_blank" rel="noopener">cal.com/contacthans-meeting</a>.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">Can you handle both outbound and paid in the same engagement?</span>
+            <div class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </button>
+          <div class="faq-body"><p class="faq-a"><strong>Yes — that's the point.</strong> The paid layer (Google Ads retargeting, intent capture) sits underneath the outbound motion and uses the same ICP definition. One attribution system tracks both. Most teams separate these; I build them as a single acquisition machine.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">What's your approach to ICP research?</span>
+            <div class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </button>
+          <div class="faq-body"><p class="faq-a">I start from <strong>conversion data, not assumptions</strong>. 10+ years of paid search data tells you which buyer types actually convert, at what CPA, in which verticals. That informs the ICP. Then Apollo and enrichment tools validate and find the actual humans. Claude helps analyze patterns in the enriched data and generate message angles specific to each segment.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">What kind of roles or engagements are you looking for?</span>
+            <div class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </button>
+          <div class="faq-body"><p class="faq-a"><strong>GTM Engineer, Head of Growth, or Revenue Operations</strong> roles — in-house or fractional. Ideally with ownership of the full acquisition system end to end, not just one channel. B2B SaaS or high-growth e-commerce preferred, fully remote. Under Kaizenstrategy Solutions LLC for contract engagements.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">What's the best way to reach you?</span>
+            <div class="faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+          </button>
+          <div class="faq-body"><p class="faq-a">Book a call at <a href="https://cal.com/contacthans-meeting" target="_blank" rel="noopener">cal.com/contacthans-meeting</a> or email <a href="mailto:hanzel@hanslacida.com">hanzel@hanslacida.com</a>.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div id="contact" class="contact-section">
+    <div class="wrap">
+      <div class="section-head reveal"><h2>Get in Touch</h2><p>Want a live pipeline walkthrough or exploring a GTM engagement? Reach out.</p></div>
+      <div class="contact-form-wrap reveal-scale">
+        <div class="form-row">
+          <div class="form-group"><label>Name</label><input type="text" placeholder="Your name"></div>
+          <div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+        </div>
+        <div class="form-full" style="margin-bottom:14px">
+          <div class="form-group">
+            <label>Topic</label>
+            <select>
+              <option value="" disabled selected>Select a topic</option>
+              <option value="pipeline">Pipeline walkthrough request</option>
+              <option value="fulltime">Full-time GTM opportunity</option>
+              <option value="contract">Contract / fractional engagement</option>
+              <option value="others">Something else</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-full">
+          <div class="form-group"><label>Message</label><textarea rows="5" placeholder="Tell me about your GTM challenge or what you're looking to build..."></textarea></div>
+        </div>
+        <button class="btn-send" onclick="window.location.href='mailto:hanzel@hanslacida.com'">Send Message</button>
+        <p class="prefer-talk">Prefer to talk? <a href="https://cal.com/contacthans-meeting" target="_blank" rel="noopener">Schedule a short intro call →</a></p>
+      </div>
+      <div class="direct-reach stagger">
+        <a href="https://cal.com/contacthans-meeting" target="_blank" rel="noopener" class="reach-card">
+          <div class="reach-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01"/></svg></div>
+          <div class="reach-label">Book a call</div><div class="reach-value">cal.com/contacthans-meeting</div>
+        </a>
+
+        <a href="mailto:hanzel@hanslacida.com" class="reach-card">
+          <div class="reach-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+          <div class="reach-label">Email</div><div class="reach-value">hanzel@hanslacida.com</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Mobile nav -->
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="#highlights" data-section="highlights"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Highlights</a>
+  <a href="#gtm-stack" data-section="gtm-stack"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Stack</a>
+  <a href="#experience" data-section="experience"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>XP</a>
+  <a href="#results" data-section="results"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Results</a>
+  <a href="#contact" data-section="contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Contact</a>
+</nav>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Hans Lacida</div>
+      <div class="footer-brand-desc">Go-to-Market Engineer · Full acquisition systems — ICP, pipeline, paid layer, and attribution in one connected machine.</div>
+    </div>
+    <div class="footer-col"><h4>Navigation</h4><ul><li><a href="#highlights">Highlights</a></li><li><a href="#gtm-stack">GTM Stack</a></li><li><a href="#experience">Experience</a></li><li><a href="#results">Results</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+    <div class="footer-col"><h4>Specialties</h4><ul><li><a href="#gtm-stack">Outbound Pipelines</a></li><li><a href="#gtm-stack">ICP Research</a></li><li><a href="#gtm-stack">AI-Powered Enrichment</a></li><li><a href="#gtm-stack">Paid Acquisition</a></li><li><a href="#gtm-stack">Attribution Systems</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="https://cal.com/contacthans-meeting" target="_blank" rel="noopener">cal.com/contacthans-meeting</a></li><li><a href="mailto:hanzel@hanslacida.com">hanzel@hanslacida.com</a></li><li><a href="https://cv.paxhl.com" target="_blank" rel="noopener">Main CV →</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Hans Lacida · Kaizenstrategy Solutions LLC · Wyoming, United States</p>
+    <a href="https://hanslacida.com" target="_blank" rel="noopener">hanslacida.com →</a>
+  </div>
+</footer>
+
+<script>
+// ── SCROLL REVEAL ──
+(function(){
+  const sel='.reveal,.reveal-up,.reveal-scale,.stagger';
+  const els=document.querySelectorAll(sel);
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}});
+  },{threshold:.1,rootMargin:'0px 0px -36px 0px'});
+  document.querySelectorAll('.hero .reveal,.hero .reveal-scale,.hero .reveal-up,.hero .stagger,.pipeline-section .reveal,.pipeline-section .stagger').forEach(el=>{
+    requestAnimationFrame(()=>setTimeout(()=>el.classList.add('visible'),40));
+  });
+  els.forEach(el=>{if(!el.closest('.hero')&&!el.closest('.pipeline-section'))io.observe(el)});
+})();
+
+// ── FAQ ACCORDION ──
+(function(){
+  document.querySelectorAll('.faq-trigger').forEach(trigger=>{
+    trigger.addEventListener('click',()=>{
+      const item=trigger.closest('.faq-item');
+      const body=item.querySelector('.faq-body');
+      const isOpen=item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o=>{
+        o.classList.remove('open');
+        o.querySelector('.faq-body').style.maxHeight='0';
+        o.querySelector('.faq-trigger').setAttribute('aria-expanded','false');
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        body.style.maxHeight=body.scrollHeight+'px';
+        trigger.setAttribute('aria-expanded','true');
+      }
+    });
+  });
+})();
+
+// ── FLOATING NAV + ACTIVE TRACKING ──
+(function(){
+  const panel=document.getElementById('section-indicator');
+  const siItems=panel.querySelectorAll('.si-item');
+  const mobileLinks=document.querySelectorAll('#mobile-nav a');
+  const navLinks=document.querySelectorAll('.nav-links a');
+  const sections=['highlights','gtm-stack','experience','results','tools','faq','contact'];
+
+  function getActive(){
+    const mid=window.innerHeight*.45;
+    let active=null;
+    sections.forEach(id=>{
+      const el=document.getElementById(id);
+      if(el&&el.getBoundingClientRect().top<=mid)active=id;
+    });
+    return active;
+  }
+
+  function update(){
+    const scrollY=window.scrollY;
+    const heroH=document.querySelector('.hero')?.offsetHeight||400;
+    const past=scrollY>heroH*.5;
+    panel.style.opacity=past?'1':'0';
+    panel.style.pointerEvents=past?'auto':'none';
+    panel.style.transform=past?'translateY(-50%) scale(1)':'translateY(-50%) scale(0.96)';
+    const active=getActive();
+    siItems.forEach(i=>i.classList.toggle('active',i.dataset.section===active));
+    mobileLinks.forEach(l=>l.classList.toggle('active',l.dataset.section===active));
+    navLinks.forEach(l=>{
+      const href=l.getAttribute('href').replace('#','');
+      l.classList.toggle('active',href===active);
+    });
+  }
+
+  siItems.forEach(item=>{
+    item.addEventListener('click',()=>{
+      const el=document.getElementById(item.dataset.section);
+      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
+  mobileLinks.forEach(link=>{
+    link.addEventListener('click',e=>{
+      e.preventDefault();
+      const el=document.getElementById(link.getAttribute('href').replace('#',''));
+      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
+
+  window.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update,{passive:true});
+  update();
+})();
+</script>
+</body>
+</html>
